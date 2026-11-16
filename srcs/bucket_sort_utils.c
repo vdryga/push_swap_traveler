@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:14:14 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 14:11:51 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 21:58:13 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	dist_from_bucket_top(t_list *stack, int bucket)
 	return (offset);
 }
 
-int	bucket_offset_forward(t_list *stack, int bucket, int position)
+int	bucket_dist_forward(t_list *stack, int bucket, int position)
 {
 	int		offset;
 
@@ -71,7 +71,7 @@ int	bucket_offset_forward(t_list *stack, int bucket, int position)
 	return (offset);
 }
 
-int	bucket_offset_backward(t_list *stack, int bucket, int position)
+int	bucket_dist_backward(t_list *stack, int bucket, int position)
 {
 	int		offset;
 
@@ -90,27 +90,19 @@ int	bucket_offset_backward(t_list *stack, int bucket, int position)
 	return (offset);
 }
 
-void	push_to_bucket(t_pushswap *data, int bucket, int pos)
+int	smallest_idx_in_stack(t_list *stack)
 {
-	int	offset_forward;
-	int	offset_backward;
-	int	offset;
+	int	smallest;
 
-	offset_forward = bucket_offset_forward(data->stack_b, bucket, pos);
-	offset_backward = bucket_offset_backward(data->stack_b, bucket, pos);
-	if (ft_abs(offset_forward) <= ft_abs(offset_backward))
-		offset = offset_forward;
-	else
-		offset = offset_backward;
-	while (offset > 0)
+	if (!stack)
+		return (-1);
+	smallest = stack->index;
+	stack = stack->next;
+	while (stack)
 	{
-		rotate_b(data);
-		offset--;
+		if (stack->index < smallest)
+			smallest = stack->index;
+		stack = stack->next;
 	}
-	while (offset < 0)
-	{
-		reverse_rotate_b(data);
-		offset++;
-	}
-	push_b(data);
+	return (smallest);
 }

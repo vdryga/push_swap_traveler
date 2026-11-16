@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 16:14:24 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 17:13:09 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 21:48:05 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,19 @@ static void	rotate(t_pushswap *data ,t_ops *rotations)
 	}
 }
 
-static void	push_fastest(t_pushswap *data)
+/**
+ * `direction` is either `A_TO_B` or `B_TO_A` as defined in push_swap.h
+ */
+void	push_fastest(t_pushswap *data, t_direction direction)
 {
 	t_list	*node;
 	t_ops	*fastest;
 
 	fastest = NULL;
-	node = data->stack_a;
+	if (direction == A_TO_B)
+		node = data->stack_a;
+	else
+		node = data->stack_b;
 	while (node)
 	{
 		if (!fastest || fastest->total > node->prevision.total)
@@ -50,13 +56,10 @@ static void	push_fastest(t_pushswap *data)
 		node = node->next;
 	}
 	rotate(data, fastest);
-	push_b(data);
-	node = data->stack_a;
-	while (node)
-	{
-		ft_bzero(&node->prevision, sizeof(t_ops));
-		node = node->next;
-	}
+	if (direction == A_TO_B)
+		push_b(data);
+	else
+		push_a(data);
 }
 
 void	push_into_buckets(t_pushswap *data)
@@ -70,11 +73,11 @@ void	push_into_buckets(t_pushswap *data)
 		node = data->stack_a;
 		while (node)
 		{
-			node->prevision = get_prevision(data, node->bucket, i);
+			ft_bzero(&node->prevision, sizeof(t_ops));
+			node->prevision = get_a_to_b_prevision(data, node->bucket, i);
 			node = node->next;
 			i++;
 		}
-		// print_stacks(data, PRINT_IDX | PRINT_BUCKET | PRINT_PREVISION_A);
-		push_fastest(data);
+		push_fastest(data, A_TO_B);
 	}
 }
