@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 11:39:11 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 16:30:06 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 18:37:20 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int		contentcmp(t_list *list_a, int i, int j)
+static int	contentcmp(t_list *list_a, int i, int j)
 {
 	int		la;
 	int		lb;
@@ -61,5 +61,5 @@ double	disorder(t_list *list_a, unsigned int size)
 		}
 		i++;
 	}
-	return (mistakes/total_pairs);
+	return (mistakes / total_pairs);
 }
