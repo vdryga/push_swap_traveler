@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 16:28:45 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 16:29:21 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 18:40:27 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_config	*config_init()
+t_config	*config_init(void)
 {
 	t_config	*config;
 
@@ -28,7 +28,7 @@ t_config	*config_init()
 	return (config);
 }
 
-t_pushswap	*pushswap_init()
+t_pushswap	*pushswap_init(void)
 {
 	t_pushswap	*data;
 

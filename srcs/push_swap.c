@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 11:41:19 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 18:50:40 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 		if (info->disorder >= 0.5)
 			turk_sort(data);
 	}
-
 }
 
 int	main(int argc, char **av)

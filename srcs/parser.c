@@ -6,11 +6,17 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/09 15:04:38 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/16 18:52:44 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	del_list(void *content)
+{
+	if (content)
+		free(content);
+}
 
 static t_bool	set_flags(char *str, t_config *flags)
 {
@@ -49,11 +55,14 @@ static int	str_is_digit(char *str)
 	return (1);
 }
 
-
-void	del_list(void *content)
+static int	check_errors(t_config *flags, t_list *head)
 {
-	if (content)
-		free(content);
+	if (has_flag_error(flags))
+	{
+		ft_lstclear(&head, del_list);
+		return (1);
+	}
+	return (0);
 }
 
 t_list	*parser(char **av, t_config *flags)
@@ -83,10 +92,7 @@ t_list	*parser(char **av, t_config *flags)
 		ft_lstadd_back(&head, new);
 		i++;
 	}
-	if (has_flag_error(flags))
-	{
-		ft_lstclear(&head, del_list);
+	if (check_errors(flags, head))
 		return (NULL);
-	}
 	return (head);
 }
