@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/15 17:04:36 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/16 18:31:29 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC := push_swap.c \
 		bucket_sort_prevision.c \
 		bucket_push_b.c \
 		insertion_sort.c \
+		insertion_sort_utils.c \
 		print_bench.c \
 		radix.c \
 		turkish_sort.c \

@@ -6,111 +6,84 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 14:16:12 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 18:31:38 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	search_min_value(t_list *a, int sorted)
+static int	search_closest_value(t_list *a, int value, int sorted)
 {
-	t_list	*end = ft_lstlast(a);
-	int		min;
-
-	min = *(int *)end->content;
-	while (sorted > 0)
-	{
-		if (min > *(int *)end->content)
-			min = *(int *)end->content;
-		end = end->prev;
-		sorted--;
-	}
-	return (min);
-}
-
-int	search_max_value(t_list *a, int sorted, int size)
-{
-	t_list	*end;
-	int		max;
-
-	end = a;
-	while (size > 0)
-	{
-		end = end->next;
-		size--;
-	}
-	max = *(int *)end->content;
-	while (sorted > 0)
-	{
-		if (max < *(int *)end->content)
-			max = *(int *)end->content;
-		end = end->prev;
-		sorted--;
-	}
-	return (max);
-}
-
-static int search_closest_value(t_list *a, int value, int sorted_min, int *sorted, int size)
-{
-	int max = 2147483647;
+	int	max;
 	int	curr;
 	int	index;
 
-	if (value < sorted_min)
-	{
-		max = search_max_value(a, *sorted, size);
-		return (max);
-	}
-	while (a)
+	max = 2147483647;
+	a = ft_lstlast(a);
+	while (sorted > 0)
 	{
 		curr = ft_abs(value - *(int *)a->content);
-		if (curr < max && value > *(int *)a->content)
+		if (curr < max && value < *(int *)a->content)
 		{
 			max = curr;
 			index = *(int *)a->content;
 		}
-		a = a->next;
+		a = a->prev;
+		sorted--;
 	}
 	return (index);
 }
 
-static void	search_right_insert(int sorted, t_pushswap *data)
+static void	middle_insert(t_pushswap *data, int sorted, int value_b)
 {
-	int	count;
-	int value_b;
-	int sorted_min;
-	int sorted_max;
 	int	found;
+	int	count;
 
 	count = 0;
-	value_b = *(int *)data->stack_b->content;
-	sorted_min = search_min_value(data->stack_a, sorted);
-	sorted_max = search_max_value(data->stack_a, sorted, data->a_size);
-	if (sorted_min > value_b)
-	{
-		reverse_multi_rotations(data, sorted, 'a');
-		push_a(data);
-		multi_rotations(data, sorted + 1, 'a');
-		return ;
-	}
-	else if (sorted_max < value_b)
-	{
-		push_a(data);
-		rotate_a(data);
-		return ;
-	}
-	found = search_closest_value(data->stack_a, value_b, sorted_min, &sorted, data->a_size);
-	while (found != *(int *)data->stack_a)
+	found = search_closest_value(data->stack_a, value_b, sorted);
+	while (found != *(int *)data->stack_a->content)
 	{
 		reverse_rotate_a(data);
 		count++;
 	}
 	push_a(data);
-	while (count > 0)
+	multi_rotations(data, count + 1, 'a');
+	return ;
+}
+
+static void	min_insert(t_pushswap *data, int min_sorted)
+{
+	int	count;
+
+	count = 0;
+	while (min_sorted != *(int *)data->stack_a->content)
 	{
-		rotate_a(data);
-		count--;
+		reverse_rotate_a(data);
+		count++;
 	}
+	push_a(data);
+	multi_rotations(data, count + 1, 'a');
+}
+
+static void	search_right_insert(int sorted, t_pushswap *data)
+{
+	int	value_b;
+	int	max_sorted;
+	int	min_sorted;
+
+	value_b = *(int *)data->stack_b->content;
+	max_sorted = search_max_value(data->stack_a);
+	min_sorted = search_min_value(data->stack_a, sorted);
+	if (value_b > max_sorted)
+	{
+		push_a(data);
+		rotate_a(data);
+		return ;
+	}
+	if (value_b < min_sorted)
+		min_insert(data, min_sorted);
+	else
+		middle_insert(data, sorted, value_b);
 }
 
 void	insertion_sort(t_pushswap *data, int size)

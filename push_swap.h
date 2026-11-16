@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 10:19:03 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/16 18:30:59 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,10 @@ t_pushswap	*pushswap_init();
 
 // insertion_sort.c
 void	insertion_sort(t_pushswap *data, int size);
+
+// insertion_sort_utils.c
+int	search_min_value(t_list *a, int sorted);
+int	search_max_value(t_list *a);
 
 // radix.c
 void	radix(t_pushswap *data);
