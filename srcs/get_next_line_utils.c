@@ -6,11 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 16:06:03 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 19:01:49 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 10:21:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *str)
 {

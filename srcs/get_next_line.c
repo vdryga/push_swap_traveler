@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:21:53 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 19:20:31 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 10:19:47 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,28 @@ static void	remove_next_line(char *buffer, int next)
 	ft_memset(buffer + i, 0, BUFFER_SIZE - i);
 }
 
-static char	*fill_line(char *line, char *buffer, int len)
+static char	*check_line(int fd, char *line, char *buf, int *browsed)
 {
-	char	*back;
-	int		i;
-	int		j;
-
-	if (is_a_new_line(buffer))
-		len += 1;
-	back = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!back)
-		return (NULL);
-	i = 0;
-	while (line && line[i])
+	if (buf[0] != '\0')
 	{
-		back[i] = line[i];
-		i++;
+		line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
+		if (!line)
+		{
+			remove_next_line(buf, find_next_line(buf));
+			return (0);
+		}
 	}
-	free(line);
-	j = 0;
-	while (buffer[j] && buffer[j] != '\n')
+	if (buf[0] == '\0')
 	{
-		back[i + j] = buffer[j];
-		j++;
+		*browsed = read(fd, buf, BUFFER_SIZE);
+		line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
+		if (!line)
+		{
+			remove_next_line(buf, find_next_line(buf));
+			return (0);
+		}
 	}
-	if (buffer[j] == '\n')
-		back[i + j] = '\n';
-	return (back);
+	return (line);
 }
 
 char	*get_next_line(int fd)
@@ -91,13 +86,9 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while (browsed > 0)
 	{
-		if (buf[0] != '\0')
-			line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
-		if (buf[0] == '\0')
-		{
-			browsed = read(fd, buf, BUFFER_SIZE);
-			line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
-		}
+		line = check_line(fd, line, buf, &browsed);
+		if (!line)
+			return (NULL);
 		remove_next_line(buf, find_next_line(buf));
 		if (is_a_new_line(line))
 			return (line);
