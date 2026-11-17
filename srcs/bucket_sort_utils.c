@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:14:14 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/16 21:58:13 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/17 21:20:06 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,21 @@ int	smallest_idx_in_stack(t_list *stack)
 		stack = stack->next;
 	}
 	return (smallest);
+}
+
+int	biggest_idx_in_stack(t_list *stack)
+{
+	int	biggest;
+
+	if (!stack)
+		return (-1);
+	biggest = stack->index;
+	stack = stack->next;
+	while (stack)
+	{
+		if (stack->index > biggest)
+			biggest = stack->index;
+		stack = stack->next;
+	}
+	return (biggest);
 }

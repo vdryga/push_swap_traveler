@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 21:58:34 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/17 17:44:40 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ void	push_fastest(t_pushswap *data, t_direction direction);
 int		bucket_dist_forward(t_list *stack, int bucket, int position);
 int		bucket_dist_backward(t_list *stack, int bucket, int position);
 int		smallest_idx_in_stack(t_list *stack);
+int		biggest_idx_in_stack(t_list *stack);
 
 // bucket_sort_prevision.c
 t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos);
@@ -197,10 +198,8 @@ int		search_biggest_index(t_list *a);
 void	turk_sort(t_pushswap *data);
 
 // turkish_utils.c
-int	count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
+int		count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
 void	count_reverse_a(t_pushswap *data, t_ops *c);
 void	count_reverse_b(t_pushswap *data, t_ops *c);
-
-
 
 #endif
