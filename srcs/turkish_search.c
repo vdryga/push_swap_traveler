@@ -6,54 +6,15 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:49:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 10:17:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 14:16:09 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	count_reverse_a(t_pushswap *data, t_ops *c)
-{
-	c->revrt_a = data->a_size - c->rt_a;
-	c->rt_a = 0;
-}
-
-void	count_reverse_b(t_pushswap *data, t_ops *c)
-{
-	c->revrt_b = data->b_size - c->rt_b;
-	c->rt_b = 0;
-}
-
-static int		count_total(t_ops *c)
-{
-	int max_rt;
-	int	max_rvrt;
-	int	total;
-
-	max_rt = max(c->rt_a, c->rt_b);
-	max_rvrt = max(c->revrt_a, c->revrt_b);
-	total = max_rt + max_rvrt + 1;
-	return (total);
-}
-
-static t_ops	*get_node(t_pushswap *data, int rot)
-{
-	t_list	*head;
-	t_ops	*curr;
-
-	head = data->stack_a;
-	while (rot > 0)
-	{
-		rot--;
-		head = head->next;
-	}
-	curr = &head->prevision;
-	return (curr);
-}
-
 static void	init_info(t_pushswap *data, t_turk *info, int rot)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = data->stack_a;
 	while (rot > 0)
@@ -67,36 +28,13 @@ static void	init_info(t_pushswap *data, t_turk *info, int rot)
 	info->current = data->stack_b->index;
 }
 
-/*static int search_closest_index(t_list *a, int value, t_turk *info)
+int	search_closest_index(t_list *a, int value, t_turk *info)
 {
-	int min = 2147483647; //maybe need some change
+	int	max;
 	int	curr;
 	int	index;
 
-	while (a)
-	{
-		curr = ft_abs(value - a->index);
-		if (value > info->b_max)
-		{
-			min = search_min_index(a);
-			return (min);
-		}
-		if (curr < min && value < a->index)
-		{
-			min = curr;
-			index = a->index;
-		}
-		a = a->next;
-	}
-	return (index);
-}*/
-
-static int search_closest_index(t_list *a, int value, t_turk *info)
-{
-	int max = 2147483647; //maybe need some change
-	int	curr;
-	int	index;
-
+	max = 2147483647;
 	if (value < info->b_min)
 	{
 		max = search_max_index(a);
@@ -115,9 +53,24 @@ static int search_closest_index(t_list *a, int value, t_turk *info)
 	return (index);
 }
 
+static t_ops	*get_node(t_pushswap *data, int rot)
+{
+	t_list	*head;
+	t_ops	*curr;
+
+	head = data->stack_a;
+	while (rot > 0)
+	{
+		rot--;
+		head = head->next;
+	}
+	curr = &head->prevision;
+	return (curr);
+}
+
 static void	fill_rotations(t_pushswap *data, t_ops *c, t_turk *info)
 {
-	int	closest;
+	int		closest;
 	t_list	*a;
 
 	closest = search_closest_index(data->stack_b, info->a_value, info);
