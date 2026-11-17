@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/16 18:31:29 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/17 14:19:51 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,9 @@ SRC := push_swap.c \
 		insertion_sort.c \
 		insertion_sort_utils.c \
 		print_bench.c \
-		radix.c \
 		turkish_sort.c \
-		turkish_utils.c
+		turkish_search.c \
+		turkish_search_utils.c
 
 BONUS_SRC := checker_bonus.c \
 				init_utils.c \
@@ -53,7 +53,9 @@ BONUS_SRC := checker_bonus.c \
 				error.c \
 				op_utils.c \
 				op_rotate.c \
-				op_push_swap.c
+				op_push_swap.c \
+				get_next_line.c \
+				get_next_line_utils.c
 
 BONUS_SRCS := $(BONUS_SRCS:%.c=$(BONUS_SRC_DIR)/%.c)
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
