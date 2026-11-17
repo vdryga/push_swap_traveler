@@ -6,17 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 11:02:09 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 13:50:03 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	del_list(void *content)
-{
-	if (content)
-		free(content);
-}
 
 static t_bool	set_flags(char *str, t_config *flags)
 {
@@ -65,12 +59,22 @@ static int	check_errors(t_config *flags, t_list *head)
 	return (0);
 }
 
+static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
+{
+	int		*converted;
+	t_list	*new;
+
+	converted = (int *)malloc(sizeof(int));
+	converted[0] = ft_atoi(av[i]);
+	new = ft_lstnew(converted);
+	ft_lstadd_back(&head, new);
+	return (head);
+}
+
 t_list	*parser(char **av, t_config *flags)
 {
 	int		i;
-	int		*converted;
 	t_list	*head;
-	t_list	*new;
 
 	i = 1;
 	head = NULL;
@@ -86,10 +90,7 @@ t_list	*parser(char **av, t_config *flags)
 			ft_lstclear(&head, del_list);
 			return (NULL);
 		}
-		converted = (int *)malloc(sizeof(int));
-		converted[0] = ft_atoi(av[i]);
-		new = ft_lstnew(converted);
-		ft_lstadd_back(&head, new);
+		head = create_node_in_stack_a(head, av, i);
 		i++;
 	}
 	if (check_errors(flags, head))

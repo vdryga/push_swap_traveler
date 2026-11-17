@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 18:50:40 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 14:04:02 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,8 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 	}
 }
 
-int	main(int argc, char **av)
+static int	error_checker(t_pushswap *data, char **av)
 {
-	t_pushswap		*data;
-
-	if (argc < 2)
-		return (1);
-	data = pushswap_init();
-	if (!data)
-		return (1);
 	data->stack_a = parser(av, data->config);
 	if (!data->stack_a)
 		return (1);
@@ -62,6 +55,20 @@ int	main(int argc, char **av)
 		msg_error();
 		return (1);
 	}
+	return (0);
+}
+
+int	main(int argc, char **av)
+{
+	t_pushswap		*data;
+
+	if (argc < 2)
+		return (1);
+	data = pushswap_init();
+	if (!data)
+		return (1);
+	if (error_checker(data, av))
+		return (1);
 	data->a_size = ft_lstsize(data->stack_a);
 	data->b_size = 0;
 	data->config->disorder = disorder(data->stack_a, data->a_size);
