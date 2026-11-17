@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 18:30:59 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 13:49:46 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,13 @@ t_pushswap	*pushswap_init();
 // parser.c
 t_list	*parser(char **av, t_config *flags);
 double	disorder(t_list *list_a, unsigned int size);
-void	del_list(void *content);
 
 // error.c
 t_bool	has_flag_error(t_config *config);
 t_bool	has_duplicate(t_list *lst);
 void	msg_error(void);
+void	del_list(void *content);
+
 
 // op_push_swap.c
 int		swap_a(t_pushswap *data);
