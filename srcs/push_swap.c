@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 14:04:02 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 17:42:01 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 	else if (info->flag_medium)
 		bucket_sort(data);
 	else if (info->flag_complex)
-		turk_sort(data);
+		radix(data);
 	else
 	{
 		if (info->disorder < 0.2)
@@ -36,7 +36,7 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 		if (info->disorder <= 0.2 && info->disorder < 0.5)
 			bucket_sort(data);
 		if (info->disorder >= 0.5)
-			turk_sort(data);
+			radix(data);
 	}
 }
 
@@ -44,14 +44,20 @@ static int	error_checker(t_pushswap *data, char **av)
 {
 	data->stack_a = parser(av, data->config);
 	if (!data->stack_a)
+	{
+		free_all(data);
+		msg_error();
 		return (1);
+	}
 	if (has_flag_error(data->config))
 	{
+		free_all(data);
 		msg_error();
 		return (1);
 	}
 	if (has_duplicate(data->stack_a))
 	{
+		free_all(data);
 		msg_error();
 		return (1);
 	}
@@ -70,12 +76,13 @@ int	main(int argc, char **av)
 	if (error_checker(data, av))
 		return (1);
 	data->a_size = ft_lstsize(data->stack_a);
-	data->b_size = 0;
 	data->config->disorder = disorder(data->stack_a, data->a_size);
-	start_sorting(data, data->config);
+	if (data->config->disorder != 0)
+		start_sorting(data, data->config);
 	optimize_rotations(&data->instructions);
-	print_stacks(data, PRINT_NB | PRINT_INSTRUCTIONS);
-	print_bench(data);
+	if (data->config->flag_bench)
+		print_bench(data);
+	ft_printf("%s\n");
 	free_all(data);
 	return (0);
 }

@@ -6,12 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:57:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 10:47:18 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 16:28:43 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 static int	count_bits(int nb)
 {
@@ -43,7 +42,7 @@ static void	alternate_a(t_pushswap *data, int bit)
 
 	i = 0;
 	len = ft_lstsize(data->stack_a);
-	while (i < len && data->stack_a)
+	while (i < len)
 	{
 		if ((find_bit(data->stack_a->index, bit) & 1) == 0)
 			push_b(data);
@@ -72,7 +71,7 @@ static void	alternate_b(t_pushswap *data, int bit)
 
 static void	back_to_a(t_pushswap *data)
 {
-	while(data->stack_b)
+	while (data->stack_b)
 		push_a(data);
 }
 
@@ -83,7 +82,6 @@ void	radix(t_pushswap *data)
 
 	bit = 0;
 	indexer(data->stack_a);
-	print_stacks(data, PRINT_NB | PRINT_IDX);
 	max = search_max_index(data->stack_a);
 	max = count_bits(max);
 	while (bit <= max)

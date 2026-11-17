@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 11:22:56 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 17:42:26 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ static void	print_disorder(t_pushswap *data)
 
 	decimal = (int)(data->config->disorder * 100);
 	left = ((data->config->disorder * 100) - decimal) * 100;
-	printf("[bench] disorder:  %d.%d%%\n", decimal, (int)left);
+	ft_printf("[bench] disorder:  %d.%d%%\n", decimal, (int)left);
 }
 
 static void	print_strategy(t_pushswap *data)
 {
-	write(1, "[bench] ", 7);
+	ft_printf("[bench] ");
 	if (data->config->flag_simple)
-		write(1, "strategy : Simple / O(n^2)", 26);
+		ft_printf("strategy : Simple / O(n^2)");
 	else if (data->config->flag_medium)
-		write(1, "startegy : Medium / O(n√n)", 26);
+		ft_printf("startegy : Medium / O(n√n)");
 	else if (data->config->flag_complex)
-		write(1, "strategy : Complex / O(n log n)", 31);
+		ft_printf("strategy : Complex / O(n log n)");
 	else
 	{
-		write(1, " strategy : Adaptative ", 24);
+		ft_printf("startegy : Adaptative ");
 		if (data->config->disorder < 0.2)
-			write(1, "O(n^2)", 7);
+			ft_printf("O(n^2)");
 		else if (data->config->disorder <= 0.2 && data->config->disorder < 0.5)
-			write(1, "O(n√n)", 7);
+			ft_printf("O(n√n)");
 		else if (data->config->disorder >= 0.5)
-			write(1, "O(n log n)", 10);
+			ft_printf(" O(n log n) ");
 	}
-	write(1, "\n", 1);
+	ft_printf("\n");
 }
 
 static void	count_ops(t_list *instructions, t_ops *counts)
@@ -89,6 +89,8 @@ void	init_t_ops(t_ops *ops)
 	ops->sw_a = 0;
 	ops->sw_b = 0;
 	ops->total = 0;
+	ops->rt_ab = 0;
+	ops->revrt_ab = 0;
 }
 
 void	print_bench(t_pushswap *data)
@@ -99,9 +101,10 @@ void	print_bench(t_pushswap *data)
 	print_strategy(data);
 	init_t_ops(&ops);
 	count_ops(data->instructions, &ops);
-	printf("[bench] total_ops: %d\n", ops.total);
-	printf("[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
-	printf(" pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
-	printf("[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
-	printf(" rra: %d rrb: %d rrr: %d\n", ops.revrt_a, ops.revrt_b, ops.revrt_ab);
+	ft_printf("[bench] total_ops: %d\n", ops.total);
+	ft_printf("[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
+	ft_printf(" pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
+	ft_printf("[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
+	ft_printf(" rra: %d rrb: %d ", ops.revrt_a, ops.revrt_b);
+	ft_printf("rrr : %d\n", ops.revrt_ab);
 }

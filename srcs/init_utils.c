@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 16:28:45 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 18:40:27 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 16:38:45 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ t_pushswap	*pushswap_init(void)
 		free(data);
 		return (NULL);
 	}
+	data->b_size = 0;
 	return (data);
 }

@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/17 14:19:51 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/17 17:01:36 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRC_DIR := srcs
 BONUS_SRC_DIR := bonus_srcs
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
+PRINTF_PATH := printf
+PRINTF := $(PRINTF_PATH)/libftprintf.a
 
 # PENSER A ENLEVER test_utils.c
 SRC := push_swap.c \
@@ -43,9 +45,7 @@ SRC := push_swap.c \
 		insertion_sort.c \
 		insertion_sort_utils.c \
 		print_bench.c \
-		turkish_sort.c \
-		turkish_search.c \
-		turkish_search_utils.c
+		radix.c \
 
 BONUS_SRC := checker_bonus.c \
 				init_utils.c \
@@ -81,14 +81,17 @@ $(BONUS_OBJ_DIR)/%.o: %.c
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
+	make -C $(PRINTF_PATH)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(NAME_BONUS) : $(BONUS_OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) -o $(NAME_BONUS)
+	make -C $(PRINTF_PATH)
+	$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) $(PRINTF) -o $(NAME_BONUS)
 
 clean:
 	make clean -C $(LIBFT_PATH)
+	make clean -C $(PRINTF_PATH)
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_DIR)
 	rm -rf $(BONUS_OBJ)
@@ -96,6 +99,7 @@ clean:
 
 fclean: clean
 	make fclean -C $(LIBFT_PATH)
+	make fclean -C $(PRINTF_PATH)
 	rm -rf $(NAME)
 	rm -rf $(NAME_BONUS)
 

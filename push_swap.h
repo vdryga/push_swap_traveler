@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 14:16:21 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/17 16:52:24 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h> //à enlever !!!
 # include "libft/libft.h"
+# include "printf/ft_printf.h"
 
 /**
  *  Bucket sort related macros
@@ -106,7 +107,6 @@ t_bool	has_flag_error(t_config *config);
 t_bool	has_duplicate(t_list *lst);
 void	msg_error(void);
 void	del_list(void *content);
-
 
 // op_push_swap.c
 int		swap_a(t_pushswap *data);
