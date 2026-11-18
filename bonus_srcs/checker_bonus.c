@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 11:27:27 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,27 @@ t_bool	is_an_instruction(char *str)
 
 static int	parse_instructions(t_list *head, t_pushswap *data)
 {
-		if (ft_strcmp(head->content, "sa"))
+		if (!ft_strcmp(head->content, "sa"))
 			swap_a(data);
-		if (ft_strcmp(head->content, "sb"))
+		if (!ft_strcmp(head->content, "sb"))
 			swap_b(data);
-		if (ft_strcmp(head->content, "ss"))
+		if (!ft_strcmp(head->content, "ss"))
 			ss(data);
-		if (ft_strcmp(head->content, "ra"))
+		if (!ft_strcmp(head->content, "ra"))
 			rotate_a(data);
-		if (ft_strcmp(head->content, "rb"))
+		if (!ft_strcmp(head->content, "rb"))
 			rotate_b(data);
-		if (ft_strcmp(head->content, "rr"))
+		if (!ft_strcmp(head->content, "rr"))
 			rr(data);
-		if (ft_strcmp(head->content, "pa"))
+		if (!ft_strcmp(head->content, "pa"))
 			push_a(data);
-		if (ft_strcmp(head->content, "pb"))
+		if (!ft_strcmp(head->content, "pb"))
 			push_b(data);
-		if (ft_strcmp(head->content, "rrb"))
+		if (!ft_strcmp(head->content, "rrb"))
 			reverse_rotate_b(data);
-		if (ft_strcmp(head->content, "rra"))
+		if (!ft_strcmp(head->content, "rra"))
 			reverse_rotate_a(data);
-		if (ft_strcmp(head->content, "rrr"))
+		if (!ft_strcmp(head->content, "rrr"))
 			rrr(data);
 		else
 			return (0);
@@ -77,6 +77,7 @@ static int	execute_instructions(t_pushswap *data)
 		}
 		head = head->next;
 	}
+	print_stacks(data, PRINT_INSTRUCTIONS | PRINT_NB);
 	if (!check_order(data->stack_a))
 		return (0);
 	return (1);
@@ -89,7 +90,10 @@ int	main(int ac, char **av)
 	char		*instr = NULL;
 
 	if (ac < 2)
+	{
+		msg_error();
 		return (1);
+	}
 	data = pushswap_init();
 	data->stack_a = parser(av, data->config);
 	if (!data->stack_a)
@@ -105,7 +109,14 @@ int	main(int ac, char **av)
 		}
 		instr = get_next_line(0);
 	}
+	print_stacks(data, PRINT_INSTRUCTIONS | PRINT_NB);
 	if (!execute_instructions(data))
+	{
+		ft_printf("KO\n");
 		free_all(data);
+		return (1);
+	}
+	else
+		ft_printf("OK\n");
 	return (0);
 }
