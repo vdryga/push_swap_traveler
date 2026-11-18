@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/17 17:01:36 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/18 10:38:28 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ SRC := push_swap.c \
 		print_bench.c \
 		radix.c \
 
+# PENSER A ENLEVER test_utils.c
 BONUS_SRC := checker_bonus.c \
+				checker_utils_bonus.c \
 				init_utils.c \
 				parser.c \
 				error.c \
@@ -55,7 +57,8 @@ BONUS_SRC := checker_bonus.c \
 				op_rotate.c \
 				op_push_swap.c \
 				get_next_line.c \
-				get_next_line_utils.c
+				get_next_line_utils.c \
+				test_utils.c
 
 BONUS_SRCS := $(BONUS_SRCS:%.c=$(BONUS_SRC_DIR)/%.c)
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)
