@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:48:11 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:50:39 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	main(int argc, char **av)
 		start_sorting(data, data->config);
 	optimize_rotations(&data->instructions);
 	print_instruction_list(data);
-	//if (data->config->flag_bench)
+	if (data->config->flag_bench)
 		print_bench(data);
 	free_data(data);
 	return (0);

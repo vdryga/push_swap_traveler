@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 16:06:03 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 13:47:11 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:36:03 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ size_t	find_next_line(const char *str)
 	while (str[i] && str[i] != '\n')
 		i++;
 	return (i);
+}
+
+int	is_a_new_line(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	bonus_add_instr(t_list **instructions, char *instr)
