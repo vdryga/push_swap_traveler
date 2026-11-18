@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:54:46 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 17:51:13 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,11 @@ typedef struct s_turk
 void		print_stacks(t_pushswap *data, int bitflags);
 void		print_config(t_config *config);
 void		printf_stacks(t_pushswap *data);
-void		print_instruction_list(t_pushswap *data);
 
 // main.c
+void	print_instruction_list(t_pushswap *data);
+
+// frees.c
 void		free_data(t_pushswap *data);
 
 //push_swap.c

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:21:53 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:36:00 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 18:09:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,19 @@ static char	*copy_ongoing(char *src, char *dest)
 static char	*fill_line(char *line, char *buffer, int len)
 {
 	char	*back;
-	int		i;
-	int		j;
 
 	if (len == 0)
 		return (NULL);
 	if (is_a_new_line(buffer))
 		len += 1;
-	back = (char *)ft_calloc(len + 1, sizeof(char));
+	back = (char *)ft_calloc(len + 2, sizeof(char));
 	if (!back)
 		return (line);
 	if (line && buffer)
 	{
 		back = copy_ongoing(line, back);
 		free(line);
-		back = copy_ongoing(buffer, line);
+		back = copy_ongoing(buffer, back);
 	}
 	return (back);
 }

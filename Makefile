@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/18 16:01:10 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/18 17:52:21 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ PRINTF := $(PRINTF_PATH)/libftprintf.a
 
 # PENSER A ENLEVER test_utils.c
 SRC :=	main.c \
+		frees.c \
 		parser.c \
 		math_utils.c \
 		lst_utils.c \
@@ -53,6 +54,7 @@ SRC :=	main.c \
 # PENSER A ENLEVER test_utils.c
 BONUS_SRC := checker_bonus.c \
 				checker_utils_bonus.c \
+				bonus_utils.c \
 				init_utils.c \
 				parser.c \
 				error.c \
@@ -61,7 +63,7 @@ BONUS_SRC := checker_bonus.c \
 				op_push_swap.c \
 				get_next_line.c \
 				get_next_line_utils.c \
-				test_utils.c
+				frees.c
 
 BONUS_SRCS := $(BONUS_SRCS:%.c=$(BONUS_SRC_DIR)/%.c)
 SRCS := $(SRC:%.c=$(SRC_DIR)/%.c)

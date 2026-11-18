@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:29:00 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:08:07 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,6 @@ void	print_config(t_config *config)
 	ft_printf("flag_adaptative:\t%d\n", config->flag_adaptative);
 	ft_printf("flag_bench:\t%d\n", config->flag_bench);
 	ft_printf("disorder:\t%f\n\n", config->disorder);
-}
-
-void	print_instruction_list(t_pushswap *data)
-{
-	t_list	*instr;
-
-	ft_printf("\n===== INSTRUCTIONS =====\n\n");
-	instr = data->instructions;
-	while (instr)
-	{
-		ft_printf("%s\n", (char *)instr->content);
-		instr = instr->next;
-	}
 }
 
 /**

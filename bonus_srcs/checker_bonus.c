@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:47:59 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 18:35:14 by vldryga          ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -57,7 +57,6 @@ static int	execute_instructions(t_pushswap *data, t_list *instructions)
 		}
 		head = head->next;
 	}
-	print_stacks(data, PRINT_NB);
 	if (!check_order(data->stack_a))
 		return (0);
 	return (1);
@@ -78,6 +77,7 @@ static int	get_instructions(t_list *instructions)
 			ft_lstclear(&instructions, del_list);
 			return (1);
 		}
+		printf("%s\n", instr);
 		instr = get_next_line(0);
 	}
 	return (0);
@@ -86,9 +86,7 @@ static int	get_instructions(t_list *instructions)
 static void	check_result(t_pushswap *data, t_list *instructions)
 {
 	if (!execute_instructions(data, instructions))
-	{
 		ft_printf("KO\n");
-	}
 	else
 		ft_printf("OK\n");
 }
@@ -113,7 +111,11 @@ int	main(int ac, char **av)
 	}
 	instructions = NULL;
 	if (get_instructions(instructions))
+	{
+		ft_lstclear(&instructions, del_list);
+		free_all(data);
 		return (1);
+	}
 	check_result(data, instructions);
 	ft_lstclear(&instructions, del_list);
 	free_all(data);

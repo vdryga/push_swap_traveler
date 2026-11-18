@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:45:55 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:47:12 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 18:07:52 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,6 @@ void	indexer(t_pushswap *data)
 	while (i < lst_size)
 	{
 		smallest = get_smallest_no_idx(data->stack_a);
-		if (!smallest)
-		{
-			ft_printf("\nINDEXER ERROR :c\n\n");
-			return ;
-		}
 		smallest->index = i;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:54:57 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 17:45:46 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ void	free_data(t_pushswap *data)
 	ft_lstclear(&data->stack_b, &del_list);
 	ft_lstclear(&data->instructions, &del_list);
 	free(data);
+}
+
+void	print_instruction_list(t_pushswap *data)
+{
+	t_list	*instr;
+
+	instr = data->instructions;
+	while (instr)
+	{
+		ft_printf("%s\n", (char *)instr->content);
+		instr = instr->next;
+	}
 }
 
 static void	start_sorting(t_pushswap *data, t_config *info)
@@ -40,7 +52,7 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 	{
 		if (info->disorder < 0.2)
 			insertion_sort(data, data->a_size);
-		if (info->disorder <= 0.2 && info->disorder < 0.5)
+		if (info->disorder >= 0.2 && info->disorder < 0.5)
 			bucket_sort(data);
 		if (info->disorder >= 0.5)
 			radix(data);
