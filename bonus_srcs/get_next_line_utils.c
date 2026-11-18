@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 16:06:03 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 10:12:11 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 13:47:11 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int	bonus_add_instr(t_list **instructions, char *instr)
 	if (!instr)
 		return (1);
 	len = ft_strlen(instr);
-	if (instr[len] == '\n')
-		instr[len] = '\0';
+	ft_printf("[%s]", instr);
+	if (instr[len - 1] == '\n')
+		ft_memset(instr + (len - 1), 0, 2);
 	node = ft_lstnew(instr);
 	if (!node)
 	{
@@ -39,6 +40,5 @@ int	bonus_add_instr(t_list **instructions, char *instr)
 		return (1);
 	}
 	ft_lstadd_back(instructions, node);
-	free(instr);
 	return (0);
 }
