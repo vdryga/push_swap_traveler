@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/13 16:59:54 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,58 +34,59 @@ t_bool	is_an_instruction(char *str)
 	return (0);
 }
 
-static void	add_to_list(char *str, t_pushswap *data)
+static int	parse_instructions(t_list *head, t_pushswap *data)
 {
-	if (!ft_strcmp(str, "sa"))
-		add_instr(data, SA);
-	if (!ft_strcmp(str, "sb"))
-		add_instr(data, SB);
-	if (!ft_strcmp(str, "ra"))
-		add_instr(data, RA);
-	if (!ft_strcmp(str, "rb"))
-		add_instr(data, RB);
-	if (!ft_strcmp(str, "rr"))
-		add_instr(data, RR);
-	if (!ft_strcmp(str, "pa"))
-		add_instr(data, PA);
-	if (!ft_strcmp(str, "pb"))
-		add_instr(data, PB);
-	if (!ft_strcmp(str, "rra"))
-		add_instr(data, RRA);
-	if (!ft_strcmp(str, "rrb"))
-		add_instr(data, RRB);
-	if (!ft_strcmp(str, "rrr"))
-		add_instr(data, RRR);
-}
-
-static void parse_instructions(t_pushswap *data, char *str)
-{
-	int		i;
-	char	**list_instr;
-
-	i = 0;
-	list_instr = ft_split(str, '\n');
-	while (list_instr[i])
-	{
-		if (is_an_instruction(list_instr[i]))
-			add_to_list(list_instr[i], data);
+		if (ft_strcmp(head->content, "sa"))
+			swap_a(data);
+		if (ft_strcmp(head->content, "sb"))
+			swap_b(data);
+		if (ft_strcmp(head->content, "ss"))
+			ss(data);
+		if (ft_strcmp(head->content, "ra"))
+			rotate_a(data);
+		if (ft_strcmp(head->content, "rb"))
+			rotate_b(data);
+		if (ft_strcmp(head->content, "rr"))
+			rr(data);
+		if (ft_strcmp(head->content, "pa"))
+			push_a(data);
+		if (ft_strcmp(head->content, "pb"))
+			push_b(data);
+		if (ft_strcmp(head->content, "rrb"))
+			reverse_rotate_b(data);
+		if (ft_strcmp(head->content, "rra"))
+			reverse_rotate_a(data);
+		if (ft_strcmp(head->content, "rrr"))
+			rrr(data);
 		else
-		{
-			if (data->instructions)
-				free_all(data);
-			printf("Error\n");
-			return ;
-		}
-		i++;
-	}
+			return (0);
+		return (1);
 }
+
+static int	execute_instructions(t_pushswap *data)
+{
+	t_list	*head;
+
+	head = data->instructions;
+	while (head)
+	{
+		if (!parse_instructions(data->instructions, data))
+		{
+			ft_lstclear(&data->instructions, del_list);
+			return (0);
+		}
+		head = head->next;
+	}
+	if (!check_order(data->stack_a))
+		return (0);
+	return (1);
+}
+
 
 int	main(int ac, char **av)
 {
 	t_pushswap *data;
-	int			browsed = 1;
-	char 		buffer[BUFFER_SIZE + 1];
-	char		*instr;
+	char		*instr = NULL;
 
 	if (ac < 2)
 		return (1);
@@ -93,24 +94,18 @@ int	main(int ac, char **av)
 	data->stack_a = parser(av, data->config);
 	if (!data->stack_a)
 		return (1);
-	instr = NULL;
-	while (browsed > 0)
+	instr = get_next_line(0);
+	while (instr)
 	{
-		browsed = read(1, buffer, BUFFER_SIZE);
-		if (browsed > 0)
+		bonus_add_instr(&data->instructions, instr);
+		if (!data->instructions)
 		{
-			buffer[BUFFER_SIZE] = '\0';
-			instr = ft_strjoin(instr, buffer);
+			free_all(data);
+			return (1);
 		}
+		instr = get_next_line(0);
 	}
-	printf("instr [%s]", instr);
-	parse_instructions(data, instr);
-	if (!data->instructions)
-	{
+	if (!execute_instructions(data))
 		free_all(data);
-		free(instr);
-		return (1);
-	}
-	//execute_instructions(data->instructions);
 	return (0);
 }
