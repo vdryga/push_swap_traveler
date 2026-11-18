@@ -6,45 +6,31 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/16 14:50:09 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:30:14 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_biggest_in_bucket(t_list *stack)
+static void	sort_buckets_in_stack_a(t_pushswap *data)
 {
-	int	max = ft_lstsize(stack) - 1;
-	int	found = stack->index;
-	int	forward = 0;
-	int back = 0;
-
-	while (stack)
-	{
-		found = stack->index;
-		stack = stack->next;
-		if (found == max)
-			break ;
-		forward++;
-	}
-	back = (max + 1) - forward;
-	if (back < forward)
-		return (back * -1);
-	return (forward);
-}
-
-static void	sort_in_buckets(t_pushswap *data)
-{
-	int	pos;
+	t_list	*node;
+	int		pos;
 
 	while (data->stack_b)
 	{
-		pos = find_biggest_in_bucket(data->stack_b);
-		if (pos > 0)
-			multi_rotations(data, pos, 'b');
-		else if (pos < 0)
-			reverse_multi_rotations(data, pos, 'b');
-		push_a(data);
+		node = data->stack_b;
+		pos = 0;
+		while (node)
+		{
+			ft_bzero(&node->prevision, sizeof(t_ops));
+			node->prevision = get_b_to_a_prevision(data, node->index, pos);
+			node = node->next;
+			pos++;
+		}
+		// ft_printf("\n==================================\n\n");
+		// print_stacks(data, PRINT_IDX | PRINT_PREVISION_B);
+		push_fastest(data, B_TO_A);
 	}
 }
 
@@ -52,10 +38,5 @@ void	bucket_sort(t_pushswap *data)
 {
 	bucket_init(data);
 	push_into_buckets(data);
-	optimize_rotations(&data->instructions);
-	printf("\ncount: %d\n", ft_lstsize(data->instructions));
-	sort_in_buckets(data);
-	optimize_rotations(&data->instructions);
-	printf("\ncount: %d\n", ft_lstsize(data->instructions));
-	print_bench(data);
+	sort_buckets_in_stack_a(data);
 }

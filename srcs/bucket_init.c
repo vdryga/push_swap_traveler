@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 09:24:17 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/16 14:42:35 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:33:36 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	bucket_init(t_pushswap *data)
 
 	indexer(data);
 	size = ft_lstsize(data->stack_a);
-	bucket_count = ft_sqrt(size);
-	// bucket_count = 6;
+	// bucket_count = ft_sqrt(size);
+	bucket_count = 6;
 	if (bucket_count == 0)
 		bucket_count = 1;
 	node = data->stack_a;

@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:45:55 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/16 13:42:41 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:29:31 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	smallest_on_top(t_pushswap *data)
 	while (smallest)
 	{
 		smallest = smallest->next;
-		backward_idx++;
+		backward_idx--;
 	}
 	if (forward_idx <= backward_idx)
 		multi_rotations(data, forward_idx, 'a');
