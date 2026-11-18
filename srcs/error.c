@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 14:45:51 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/17 16:48:03 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 11:49:41 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_bool	is_duplicate(t_list *lst)
 
 t_bool	has_flag_error(t_config *config)
 {
-	int flag_count;
+	int	flag_count;
 
 	flag_count = config->flag_adaptative;
 	flag_count += config->flag_simple;

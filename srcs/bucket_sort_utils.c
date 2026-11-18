@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:14:14 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:24:41 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:45:31 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	dist_from_bucket_bottom(t_list *stack, int bucket)
 		return (0);
 	offset = 1;
 	head = stack;
-	stack = lstnnext(stack , 1);
+	stack = lstnnext(stack, 1);
 	while (stack->bucket == bucket)
 	{
 		if (stack == head)
@@ -41,8 +41,8 @@ static int	dist_from_bucket_top(t_list *stack, int bucket)
 		return (0);
 	offset = -1;
 	head = stack;
-	stack = lstnprev(stack , 1);
-	while (lstnprev(stack , 1)->bucket == bucket)
+	stack = lstnprev(stack, 1);
+	while (lstnprev(stack, 1)->bucket == bucket)
 	{
 		if (stack == head)
 			return (0);
@@ -88,38 +88,4 @@ int	bucket_dist_backward(t_list *stack, int bucket, int position)
 	else
 		offset += dist_from_bucket_top(stack, bucket);
 	return (offset);
-}
-
-int	smallest_idx_in_stack(t_list *stack)
-{
-	int	smallest;
-
-	if (!stack)
-		return (-1);
-	smallest = stack->index;
-	stack = stack->next;
-	while (stack)
-	{
-		if (stack->index < smallest)
-			smallest = stack->index;
-		stack = stack->next;
-	}
-	return (smallest);
-}
-
-int	biggest_idx_in_stack(t_list *stack)
-{
-	int	biggest;
-
-	if (!stack)
-		return (-1);
-	biggest = stack->index;
-	stack = stack->next;
-	while (stack)
-	{
-		if (stack->index > biggest)
-			biggest = stack->index;
-		stack = stack->next;
-	}
-	return (biggest);
 }

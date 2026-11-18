@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 13:26:34 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:46:50 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static void	back_in_a(t_pushswap *data)
 {
 	int	max;
 
-	max = search_max_index(data->stack_b);
+	max = biggest_idx_in_stack(data->stack_b);
 	while (data->stack_b->index != max)
 		rotate_b(data);
 	while (data->stack_b)

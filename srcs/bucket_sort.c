@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:23:02 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:30:14 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:41:36 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static void	sort_buckets_in_stack_a(t_pushswap *data)
 			node = node->next;
 			pos++;
 		}
-		// ft_printf("\n==================================\n\n");
-		// print_stacks(data, PRINT_IDX | PRINT_PREVISION_B);
 		push_fastest(data, B_TO_A);
 	}
 }

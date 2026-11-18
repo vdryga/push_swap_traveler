@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 10:39:26 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:32:23 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,14 @@ int		biggest_idx_in_stack(t_list *stack);
 // bucket_sort_prevision.c
 t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos);
 t_ops	get_b_to_a_prevision(t_pushswap *data, int idx, int starting_pos);
+
+// bucket_sort_prev_utils.c
+int		get_target_bucket(t_list *stack, int bucket);
+void	calc_prev_total(t_ops *ops, t_direction dir);
+t_ops	prev_b_to_a_smallest(t_pushswap *data, int small, int pos);
+t_ops	prev_b_to_a_biggest(t_pushswap *data, int big, int pos);
+t_ops	prev_b_to_a_middle(t_pushswap *data, int idx, int pos);
+
 
 // indexer.c
 void	indexer(t_pushswap *data);

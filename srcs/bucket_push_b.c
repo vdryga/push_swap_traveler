@@ -6,13 +6,13 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 16:14:24 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:30:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:23:39 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_pushswap *data ,t_ops *rotations)
+static void	rotate(t_pushswap *data, t_ops *rotations)
 {
 	while (rotations->rt_a)
 	{
@@ -67,7 +67,7 @@ void	push_into_buckets(t_pushswap *data)
 	t_list	*node;
 	int		i;
 
-	while(data->stack_a)
+	while (data->stack_a)
 	{
 		i = 0;
 		node = data->stack_a;
