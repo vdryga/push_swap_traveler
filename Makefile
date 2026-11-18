@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/18 10:39:27 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/18 11:00:15 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,6 @@ BONUS_SRC_DIR := bonus_srcs
 
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
-PRINTF_PATH := printf
-PRINTF := $(PRINTF_PATH)/libftprintf.a
-
 PRINTF_PATH := printf
 PRINTF := $(PRINTF_PATH)/libftprintf.a
 
