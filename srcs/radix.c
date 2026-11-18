@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:57:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:46:50 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:22:43 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,6 @@ static void	alternate_b(t_pushswap *data, int bit)
 	}
 }
 
-static void	back_to_a(t_pushswap *data)
-{
-	while (data->stack_b)
-		push_a(data);
-}
-
 void	radix(t_pushswap *data)
 {
 	int	max;
@@ -91,5 +85,6 @@ void	radix(t_pushswap *data)
 		alternate_b(data, bit + 1);
 		bit++;
 	}
-	back_to_a(data);
+	while (data->stack_b)
+		push_a(data);
 }

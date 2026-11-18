@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 14:49:58 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:21:07 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,30 @@ static void	print_strategy(t_pushswap *data)
 	ft_printf("\n");
 }
 
+static void	ops_browsing(t_ops *counts, char *curr)
+{
+	if (ft_strcmp(curr, "sa") == 0)
+		counts->sw_a++;
+	else if (ft_strcmp(curr, "sb") == 0)
+		counts->sw_b++;
+	else if (ft_strcmp(curr, "pa") == 0)
+		counts->psh_a++;
+	else if (ft_strcmp(curr, "pb") == 0)
+		counts->psh_b++;
+	else if (ft_strcmp(curr, "ra") == 0)
+		counts->rt_a++;
+	else if (ft_strcmp(curr, "rb") == 0)
+		counts->rt_b++;
+	else if (ft_strcmp(curr, "rra") == 0)
+		counts->revrt_a++;
+	else if (ft_strcmp(curr, "rrb") == 0)
+		counts->revrt_b++;
+	else if (ft_strcmp(curr, "rr") == 0)
+		counts->rt_ab++;
+	else if (ft_strcmp(curr, "rrr") == 0)
+		counts->revrt_ab++;
+}
+
 static void	count_ops(t_list *instructions, t_ops *counts)
 {
 	char	*curr;
@@ -53,26 +77,7 @@ static void	count_ops(t_list *instructions, t_ops *counts)
 	while (head)
 	{
 		curr = (char *)head->content;
-		if (ft_strcmp(curr, "sa") == 0)
-			counts->sw_a++;
-		else if (ft_strcmp(curr, "sb") == 0)
-			counts->sw_b++;
-		else if (ft_strcmp(curr, "pa") == 0)
-			counts->psh_a++;
-		else if (ft_strcmp(curr, "pb") == 0)
-			counts->psh_b++;
-		else if (ft_strcmp(curr, "ra") == 0)
-			counts->rt_a++;
-		else if (ft_strcmp(curr, "rb") == 0)
-			counts->rt_b++;
-		else if (ft_strcmp(curr, "rra") == 0)
-			counts->revrt_a++;
-		else if (ft_strcmp(curr, "rrb") == 0)
-			counts->revrt_b++;
-		else if (ft_strcmp(curr, "rr") == 0)
-			counts->rt_ab++;
-		else if (ft_strcmp(curr, "rrr") == 0)
-			counts->revrt_ab++;
+		ops_browsing(counts, curr);
 		counts->total++;
 		head = head->next;
 	}
@@ -90,5 +95,6 @@ void	print_bench(t_pushswap *data)
 	ft_printf("[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
 	ft_printf(" pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
 	ft_printf("[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
-	ft_printf(" rra: %d rrb: %d rrr: %d\n", ops.revrt_a, ops.revrt_b, ops.revrt_ab);
+	ft_printf(" rra: %d rrb: %d ", ops.revrt_a, ops.revrt_b);
+	ft_printf("rrr %d\n", ops.revrt_ab);
 }

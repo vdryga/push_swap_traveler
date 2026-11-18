@@ -6,26 +6,25 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:21:53 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:50:11 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:36:00 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static int	is_a_new_line(char *str)
+static char	*copy_ongoing(char *src, char *dest)
 {
 	int	i;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i])
+	while (src && src[i])
 	{
-		if (str[i] == '\n')
-			return (1);
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
+	if (src[i] == '\n')
+		dest[i] = '\n';
+	return (dest);
 }
 
 static char	*fill_line(char *line, char *buffer, int len)
@@ -41,21 +40,12 @@ static char	*fill_line(char *line, char *buffer, int len)
 	back = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!back)
 		return (line);
-	i = 0;
-	while (line && line[i])
+	if (line && buffer)
 	{
-		back[i] = line[i];
-		i++;
+		back = copy_ongoing(line, back);
+		free(line);
+		back = copy_ongoing(buffer, line);
 	}
-	free(line);
-	j = 0;
-	while (buffer[j] && buffer[j] != '\n')
-	{
-		back[i + j] = buffer[j];
-		j++;
-	}
-	if (buffer[j] == '\n')
-		back[i + j] = '\n';
 	return (back);
 }
 

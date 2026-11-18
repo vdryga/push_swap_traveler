@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:39:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:28:16 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:46:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,18 @@ int	check_order(t_list *a)
 		prev = curr;
 	}
 	return (1);
+}
+
+t_bool	is_an_instruction(char *str)
+{
+	if (!ft_strcmp(str, "sa") || !ft_strcmp(str, "sb"))
+		return (1);
+	if (!ft_strcmp(str, "ra") || !ft_strcmp(str, "rb") || !ft_strcmp(str, "rr"))
+		return (1);
+	if (!ft_strcmp(str, "pa") || !ft_strcmp(str, "pb"))
+		return (1);
+	if (!ft_strcmp(str, "rra") || !ft_strcmp(str, "rrb")
+		|| !ft_strcmp(str, "rrr"))
+		return (1);
+	return (0);
 }
