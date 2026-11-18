@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:57:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:46:50 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:02:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	radix(t_pushswap *data)
 
 	bit = 0;
 	indexer(data);
-	print_stacks(data, PRINT_NB | PRINT_IDX);
 	max = biggest_idx_in_stack(data->stack_a);
 	max = count_bits(max);
 	while (bit <= max)

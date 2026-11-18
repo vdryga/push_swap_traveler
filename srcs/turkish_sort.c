@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 09:48:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:46:50 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:02:41 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,5 @@ void	turk_sort(t_pushswap *data)
 		pos = search_lowest(data, &info);
 		push_lowest(data, pos);
 	}
-	print_stacks(data, PRINT_IDX | PRINT_NB);
 	back_in_a(data);
 }

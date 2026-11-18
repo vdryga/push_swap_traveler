@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 10:29:00 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:03:41 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	print_instruction_list(t_pushswap *data)
 {
 	t_list	*instr;
 
-	ft_printf("\n===== INSTRUCTIONS =====\n\n");
 	instr = data->instructions;
 	while (instr)
 	{
