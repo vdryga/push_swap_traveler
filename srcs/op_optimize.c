@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 09:43:50 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 11:51:55 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 13:53:29 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,42 +83,44 @@ static t_list	*optimize(t_list **op_lst, t_list *start, t_ops *rot)
 	return (*op_lst);
 }
 
+static int	optimize_loop(t_list *node, t_list **next, t_list **op_lst, t_ops *ops)
+{
+	static t_bool	in_rotation = FALSE;
+	static t_list	*start = NULL;
+
+	if (is_rotation_str(node->content))
+	{
+		if (!in_rotation)
+			start = node;
+		in_rotation = TRUE;
+		add_rotation(ops, node->content);
+	}
+	else if (in_rotation)
+	{
+		in_rotation = FALSE;
+		*next = node->next;
+		if ((ops->rt_a && ops->rt_b) || (ops->revrt_a && ops->revrt_b))
+			*op_lst = optimize(op_lst, start, ops);
+		if (!*op_lst)
+			return (1);
+		ft_bzero(ops, sizeof(t_ops));
+	}
+	return (0);
+}
+
 int	optimize_rotations(t_list **op_lst)
 {
 	t_list	*node;
 	t_list	*next;
-	t_list	*start;
-	t_ops	instructions;
-	t_bool	in_rotation;
+	t_ops	ops;
 
-	ft_bzero(&instructions, sizeof(t_ops));
-	in_rotation = FALSE;
+	ft_bzero(&ops, sizeof(t_ops));
 	node = *op_lst;
 	while (node)
 	{
-		next = NULL;
-		if (is_rotation_str(node->content))
-		{
-			if (!in_rotation)
-				start = node;
-			in_rotation = TRUE;
-			add_rotation(&instructions, node->content);
-		}
-		else if (in_rotation)
-		{
-			in_rotation = FALSE;
-			next = node->next;
-			if ((instructions.rt_a && instructions.rt_b)
-				|| (instructions.revrt_a && instructions.revrt_b))
-				*op_lst = optimize(op_lst, start, &instructions);
-			ft_bzero(&instructions, sizeof(t_ops));
-		}
-		if (!*op_lst)
-			return (1);
-		if (next)
-			node = next;
-		else
-			node = node->next;
+		next = node->next;
+		optimize_loop(node, &next, op_lst, &ops);
+		node = next;
 	}
 	return (0);
 }

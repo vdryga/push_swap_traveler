@@ -6,13 +6,13 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:15:36 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 14:57:22 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_all(t_pushswap *data)
+void	free_data(t_pushswap *data)
 {
 	free(data->config);
 	ft_lstclear(&data->stack_a, &del_list);
@@ -45,19 +45,19 @@ static int	error_checker(t_pushswap *data, char **av)
 	data->stack_a = parser(av, data->config);
 	if (!data->stack_a)
 	{
-		free_all(data);
+		free_data(data);
 		msg_error();
 		return (1);
 	}
 	if (has_flag_error(data->config))
 	{
-		free_all(data);
+		free_data(data);
 		msg_error();
 		return (1);
 	}
 	if (has_duplicate(data->stack_a))
 	{
-		free_all(data);
+		free_data(data);
 		msg_error();
 		return (1);
 	}
@@ -83,6 +83,6 @@ int	main(int argc, char **av)
 	if (data->config->flag_bench)
 		print_bench(data);
 	ft_printf("%s\n");
-	free_all(data);
+	free_data(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 11:32:23 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 15:03:53 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
 
+// main.c
+void	free_data(t_pushswap *data);
+
 //push_swap.c
 t_pushswap	*pushswap_init();
 
@@ -115,16 +118,16 @@ void	msg_error(void);
 void	del_list(void *content);
 
 // op_push_swap.c
-int		swap_a(t_pushswap *data);
-int		swap_b(t_pushswap *data);
-int		push_a(t_pushswap *data);
-int		push_b(t_pushswap *data);
+void	swap_a(t_pushswap *data);
+void	swap_b(t_pushswap *data);
+void	push_a(t_pushswap *data);
+void	push_b(t_pushswap *data);
 
 // op_rotate.c
-int		rotate_a(t_pushswap *data);
-int		rotate_b(t_pushswap *data);
-int		reverse_rotate_a(t_pushswap *data);
-int		reverse_rotate_b(t_pushswap *data);
+void	rotate_a(t_pushswap *data);
+void	rotate_b(t_pushswap *data);
+void	reverse_rotate_a(t_pushswap *data);
+void	reverse_rotate_b(t_pushswap *data);
 
 // op_utils.c
 int		add_instr(t_list **instructions, int instr);

@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/18 11:00:15 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/18 14:50:35 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PRINTF_PATH := printf
 PRINTF := $(PRINTF_PATH)/libftprintf.a
 
 # PENSER A ENLEVER test_utils.c
-SRC := push_swap.c \
+SRC :=	main.c \
 		parser.c \
 		math_utils.c \
 		lst_utils.c \
@@ -43,6 +43,7 @@ SRC := push_swap.c \
 		bucket_init.c \
 		bucket_sort_utils.c \
 		bucket_sort_prevision.c \
+		bucket_sort_prev_utils.c \
 		bucket_push_b.c \
 		insertion_sort.c \
 		insertion_sort_utils.c \
