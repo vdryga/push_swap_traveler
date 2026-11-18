@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:13:34 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:54:46 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define TOP 1
 # define BOTTOM 2
 # define ANY 3
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 enum
 {

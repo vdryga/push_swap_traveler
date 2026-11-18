@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 13:50:03 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:42:44 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,17 @@ static int	str_is_digit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] == ' ')
+	while (str[i]
+		&& (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r')))
 		i++;
-	if (str[i] && str[i] == '-')
+	if (str[i] && (str[i] == '-' || str[i] == '+'))
 		i++;
 	if (str[i] == '\0')
+		return (0);
+	while (str[i] == '0')
+		i++;
+	if (ft_strlen(&str[i]) > 10
+		|| ft_atoll(str) > INT_MAX || ft_atoll(str) < INT_MIN)
 		return (0);
 	while (str[i])
 	{
