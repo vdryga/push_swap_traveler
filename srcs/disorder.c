@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 11:39:11 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/16 18:37:20 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 16:56:26 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ double	disorder(t_list *list_a, unsigned int size)
 	unsigned int		j;
 
 	if (size < 2)
-		return (1.0f);
+		return (0.0f);
 	mistakes = 0;
 	total_pairs = 0;
 	i = 0;
