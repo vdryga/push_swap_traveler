@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 14:57:22 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:12:26 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ void	free_data(t_pushswap *data)
 
 static void	start_sorting(t_pushswap *data, t_config *info)
 {
+	if (info->disorder == 0 || data->a_size <= 1)
+	{
+		if (info->flag_bench)
+			print_bench(data);
+		free_data(data);
+		exit(0);
+	}
 	if (info->flag_simple)
 		insertion_sort(data, data->a_size);
 	else if (info->flag_medium)
@@ -82,7 +89,7 @@ int	main(int argc, char **av)
 	optimize_rotations(&data->instructions);
 	if (data->config->flag_bench)
 		print_bench(data);
-	ft_printf("%s\n");
+	print_instruction_list(data);
 	free_data(data);
 	return (0);
 }
