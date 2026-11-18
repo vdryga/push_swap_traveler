@@ -6,7 +6,8 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 15:51:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:59:04 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +60,7 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 		else if (!ft_strcmp(head->content, "rrr"))
 			rrr(data);
 		else
-			return (0); /* meybe needs chechks so it could return an error ? */
+			return (0);
 		return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 16:52:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:03:53 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ enum
 	RRB,
 	RRR
 };
+
+typedef enum
+{
+	A_TO_B,
+	B_TO_A
+}	t_direction;
 
 typedef enum
 {
@@ -95,6 +101,9 @@ void	print_config(t_config *config);
 void	printf_stacks(t_pushswap *data);
 void	print_instruction_list(t_pushswap *data);
 
+// main.c
+void	free_data(t_pushswap *data);
+
 //push_swap.c
 t_pushswap	*pushswap_init();
 
@@ -109,16 +118,16 @@ void	msg_error(void);
 void	del_list(void *content);
 
 // op_push_swap.c
-int		swap_a(t_pushswap *data);
-int		swap_b(t_pushswap *data);
-int		push_a(t_pushswap *data);
-int		push_b(t_pushswap *data);
+void	swap_a(t_pushswap *data);
+void	swap_b(t_pushswap *data);
+void	push_a(t_pushswap *data);
+void	push_b(t_pushswap *data);
 
 // op_rotate.c
-int		rotate_a(t_pushswap *data);
-int		rotate_b(t_pushswap *data);
-int		reverse_rotate_a(t_pushswap *data);
-int		reverse_rotate_b(t_pushswap *data);
+void	rotate_a(t_pushswap *data);
+void	rotate_b(t_pushswap *data);
+void	reverse_rotate_a(t_pushswap *data);
+void	reverse_rotate_b(t_pushswap *data);
 
 // op_utils.c
 int		add_instr(t_list **instructions, int instr);
@@ -144,7 +153,6 @@ int		min(int a, int b);
 
 // print_bench.c
 void	print_bench(t_pushswap *data);
-void	init_t_ops(t_ops *ops);
 
 	/**
 	*	BUCKET SORT
@@ -158,17 +166,29 @@ void	push_into_buckets(t_pushswap *data);
 
 // bucket_init.c
 void	bucket_init(t_pushswap *data);
+void	push_fastest(t_pushswap *data, t_direction direction);
 
 // bucket_sort_utils.c
-void	push_to_bucket(t_pushswap *data, int bucket, int position);
-int		bucket_offset_forward(t_list *stack, int bucket, int position);
-int		bucket_offset_backward(t_list *stack, int bucket, int position);
+int		bucket_dist_forward(t_list *stack, int bucket, int position);
+int		bucket_dist_backward(t_list *stack, int bucket, int position);
+int		smallest_idx_in_stack(t_list *stack);
+int		biggest_idx_in_stack(t_list *stack);
 
 // bucket_sort_prevision.c
-t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
+t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos);
+t_ops	get_b_to_a_prevision(t_pushswap *data, int idx, int starting_pos);
+
+// bucket_sort_prev_utils.c
+int		get_target_bucket(t_list *stack, int bucket);
+void	calc_prev_total(t_ops *ops, t_direction dir);
+t_ops	prev_b_to_a_smallest(t_pushswap *data, int small, int pos);
+t_ops	prev_b_to_a_biggest(t_pushswap *data, int big, int pos);
+t_ops	prev_b_to_a_middle(t_pushswap *data, int idx, int pos);
+
 
 // indexer.c
-void	indexer(t_list *stack);
+void	indexer(t_pushswap *data);
+void	smallest_on_top(t_pushswap *data);
 
 // index_utils.c
 int		search_min_index(t_list *a);
@@ -196,10 +216,5 @@ void	turk_sort(t_pushswap *data);
 int		count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
 void	count_reverse_a(t_pushswap *data, t_ops *c);
 void	count_reverse_b(t_pushswap *data, t_ops *c);
-
-// turkish_search_utils.c
-int		count_total(t_ops *c);
-void	count_reverse_b(t_pushswap *data, t_ops *c);
-void	count_reverse_a(t_pushswap *data, t_ops *c);
 
 #endif

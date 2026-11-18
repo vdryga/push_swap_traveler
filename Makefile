@@ -6,23 +6,25 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/18 10:38:28 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/18 16:01:10 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := push_swap
 NAME_BONUS := checker
+
 OBJ_DIR := obj
 BONUS_OBJ_DIR := bonus_obj
 SRC_DIR := srcs
 BONUS_SRC_DIR := bonus_srcs
+
 LIBFT_PATH := libft
 LIBFT := $(LIBFT_PATH)/libft.a
 PRINTF_PATH := printf
 PRINTF := $(PRINTF_PATH)/libftprintf.a
 
 # PENSER A ENLEVER test_utils.c
-SRC := push_swap.c \
+SRC :=	main.c \
 		parser.c \
 		math_utils.c \
 		lst_utils.c \
@@ -41,6 +43,7 @@ SRC := push_swap.c \
 		bucket_init.c \
 		bucket_sort_utils.c \
 		bucket_sort_prevision.c \
+		bucket_sort_prev_utils.c \
 		bucket_push_b.c \
 		insertion_sort.c \
 		insertion_sort_utils.c \

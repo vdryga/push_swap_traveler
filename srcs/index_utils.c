@@ -6,36 +6,42 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/15 17:05:19 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:48:57 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	search_min_index(t_list *a)
+int	smallest_idx_in_stack(t_list *stack)
 {
-	int	min;
+	int	smallest;
 
-	min = a->index;
-	while (a)
+	if (!stack)
+		return (-1);
+	smallest = stack->index;
+	stack = stack->next;
+	while (stack)
 	{
-		if (min > a->index)
-			min = a->index;
-		a = a->next;
+		if (stack->index < smallest)
+			smallest = stack->index;
+		stack = stack->next;
 	}
-	return (min);
+	return (smallest);
 }
 
-int	search_max_index(t_list *a)
+int	biggest_idx_in_stack(t_list *stack)
 {
-	int	max;
+	int	biggest;
 
-	max = a->index;
-	while (a)
+	if (!stack)
+		return (-1);
+	biggest = stack->index;
+	stack = stack->next;
+	while (stack)
 	{
-		if (max < a->index)
-			max = a->index;
-		a = a->next;
+		if (stack->index > biggest)
+			biggest = stack->index;
+		stack = stack->next;
 	}
-	return (max);
+	return (biggest);
 }

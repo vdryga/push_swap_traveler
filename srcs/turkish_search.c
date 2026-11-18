@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 08:49:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 14:16:09 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 11:46:50 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	init_info(t_pushswap *data, t_turk *info, int rot)
 		rot--;
 		head = head->next;
 	}
-	info->b_max = search_max_index(data->stack_b);
-	info->b_min = search_min_index(data->stack_b);
+	info->b_max = biggest_idx_in_stack(data->stack_b);
+	info->b_min = smallest_idx_in_stack(data->stack_b);
 	info->a_value = head->index;
 	info->current = data->stack_b->index;
 }
@@ -37,7 +37,7 @@ int	search_closest_index(t_list *a, int value, t_turk *info)
 	max = 2147483647;
 	if (value < info->b_min)
 	{
-		max = search_max_index(a);
+		max = biggest_idx_in_stack(a);
 		return (max);
 	}
 	while (a)
@@ -93,7 +93,7 @@ int	count_moves_for_one(t_pushswap *data, t_turk *info, int rotations)
 	t_ops	*c;
 
 	c = get_node(data, rotations);
-	init_t_ops(c);
+	ft_bzero(c, sizeof(t_ops));
 	c->rt_a = rotations;
 	init_info(data, info, rotations);
 	fill_rotations(data, c, info);
