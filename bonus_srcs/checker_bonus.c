@@ -6,7 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
+=======
+/*   Updated: 2026/11/16 11:35:14 by arbernad         ###   ########.fr       */
+>>>>>>> bucket_opti
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +63,19 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 		if (ft_strcmp(head->content, "rrr"))
 			rrr(data);
 		else
+<<<<<<< HEAD
 			return (0);
 		return (1);
+=======
+		{
+			if (data->instructions)
+				free_all(data);
+			ft_printf("Error\n");
+			return ;
+		}
+		i++;
+	}
+>>>>>>> bucket_opti
 }
 
 static int	execute_instructions(t_pushswap *data)
@@ -105,7 +120,14 @@ int	main(int ac, char **av)
 		}
 		instr = get_next_line(0);
 	}
+<<<<<<< HEAD
 	if (!execute_instructions(data))
+=======
+	ft_printf("instr [%s]", instr);
+	parse_instructions(data, instr);
+	if (!data->instructions)
+	{
+>>>>>>> bucket_opti
 		free_all(data);
 	return (0);
 }

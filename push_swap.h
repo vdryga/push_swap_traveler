@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 16:52:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/18 10:39:26 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ enum
 	RRB,
 	RRR
 };
+
+typedef enum
+{
+	A_TO_B,
+	B_TO_A
+}	t_direction;
 
 typedef enum
 {
@@ -144,7 +150,6 @@ int		min(int a, int b);
 
 // print_bench.c
 void	print_bench(t_pushswap *data);
-void	init_t_ops(t_ops *ops);
 
 	/**
 	*	BUCKET SORT
@@ -158,17 +163,21 @@ void	push_into_buckets(t_pushswap *data);
 
 // bucket_init.c
 void	bucket_init(t_pushswap *data);
+void	push_fastest(t_pushswap *data, t_direction direction);
 
 // bucket_sort_utils.c
-void	push_to_bucket(t_pushswap *data, int bucket, int position);
-int		bucket_offset_forward(t_list *stack, int bucket, int position);
-int		bucket_offset_backward(t_list *stack, int bucket, int position);
+int		bucket_dist_forward(t_list *stack, int bucket, int position);
+int		bucket_dist_backward(t_list *stack, int bucket, int position);
+int		smallest_idx_in_stack(t_list *stack);
+int		biggest_idx_in_stack(t_list *stack);
 
 // bucket_sort_prevision.c
-t_ops	get_prevision(t_pushswap *data, int bucket, int starting_pos);
+t_ops	get_a_to_b_prevision(t_pushswap *data, int bucket, int starting_pos);
+t_ops	get_b_to_a_prevision(t_pushswap *data, int idx, int starting_pos);
 
 // indexer.c
-void	indexer(t_list *stack);
+void	indexer(t_pushswap *data);
+void	smallest_on_top(t_pushswap *data);
 
 // index_utils.c
 int		search_min_index(t_list *a);
@@ -196,10 +205,5 @@ void	turk_sort(t_pushswap *data);
 int		count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
 void	count_reverse_a(t_pushswap *data, t_ops *c);
 void	count_reverse_b(t_pushswap *data, t_ops *c);
-
-// turkish_search_utils.c
-int		count_total(t_ops *c);
-void	count_reverse_b(t_pushswap *data, t_ops *c);
-void	count_reverse_a(t_pushswap *data, t_ops *c);
 
 #endif
