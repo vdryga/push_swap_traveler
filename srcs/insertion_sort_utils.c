@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:29:09 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 13:28:46 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:16:24 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ t_bool	is_stack_a_sorted(t_pushswap *data)
 
 	min = search_min_value(data->stack_a, data->a_size);
 	node = data->stack_a;
-	while (*(int *)node->content != min)
+	while (node->index != min)
 		node = lstnnext(node, 1);
 	node = lstnnext(node, 1);
 	previous = min;
-	while (*(int *)node->content != min)
+	while (node->index != min)
 	{
-		if (previous > *(int *)node->content)
+		if (previous > node->index)
 			return (FALSE);
-		previous = *(int *)node->content;
+		previous = node->index;
 		node = lstnnext(node, 1);
 	}
 	return (TRUE);
@@ -40,11 +40,11 @@ int	search_min_value(t_list *a, int sorted)
 	int		min;
 
 	end = ft_lstlast(a);
-	min = *(int *)end->content;
+	min = end->index;
 	while (sorted > 0)
 	{
-		if (min > *(int *)end->content)
-			min = *(int *)end->content;
+		if (min > end->index)
+			min = end->index;
 		end = end->prev;
 		sorted--;
 	}
@@ -57,13 +57,13 @@ int	search_max_value(t_list *a)
 	int		max;
 
 	end = ft_lstlast(a);
-	max = *(int *)end->content;
+	max = end->index;
 	return (max);
 }
 
 t_bool	order_first_two(t_pushswap *data)
 {
-	if (*(int *)data->stack_a->content > *(int *)data->stack_a->next->content)
+	if (data->stack_a->index > data->stack_a->next->index)
 	{
 		swap_a(data);
 		if (is_stack_a_sorted(data))

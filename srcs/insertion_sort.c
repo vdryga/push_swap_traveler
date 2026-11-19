@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 14:03:50 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:14:37 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static int	search_closest_value(t_list *a, int value, int sorted)
 	a = ft_lstlast(a);
 	while (sorted > 0)
 	{
-		curr = ft_abs(value - *(int *)a->content);
-		if (curr < max && value < *(int *)a->content)
+		curr = ft_abs(value - a->index);
+		if (curr < max && value < a->index)
 		{
 			max = curr;
-			index = *(int *)a->content;
+			index = a->index;
 		}
 		a = a->prev;
 		sorted--;
@@ -41,7 +41,7 @@ static void	middle_insert(t_pushswap *data, int sorted, int value_b)
 
 	count = 0;
 	found = search_closest_value(data->stack_a, value_b, sorted);
-	while (found != *(int *)data->stack_a->content)
+	while (found != data->stack_a->index)
 	{
 		reverse_rotate_a(data);
 		count++;
@@ -56,7 +56,7 @@ static void	min_insert(t_pushswap *data, int min_sorted)
 	int	count;
 
 	count = 0;
-	while (min_sorted != *(int *)data->stack_a->content)
+	while (min_sorted != data->stack_a->index)
 	{
 		reverse_rotate_a(data);
 		count++;
@@ -72,7 +72,7 @@ static void	search_right_insert(int sorted, t_pushswap *data)
 	int	max_sorted;
 	int	min_sorted;
 
-	value_b = *(int *)data->stack_b->content;
+	value_b = data->stack_b->index;
 	max_sorted = search_max_value(data->stack_a);
 	min_sorted = search_min_value(data->stack_a, sorted);
 	if (value_b > max_sorted)	//
@@ -96,8 +96,7 @@ void	insertion_sort(t_pushswap *data, int size)
 	sorted = 2;
 	while (sorted < size)
 	{
-		if (*(int *)data->stack_a->content
-			< *(int *)lstnprev(data->stack_a, 1)->content)
+		if (data->stack_a->index < lstnprev(data->stack_a, 1)->index)
 		{
 			push_b(data);
 			search_right_insert(sorted, data);
