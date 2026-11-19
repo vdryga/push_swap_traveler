@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 17:51:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/19 14:01:42 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,8 @@ t_pushswap	*pushswap_init(void);
 
 // insertion_sort.c
 void		insertion_sort(t_pushswap *data, int size);
+t_bool		is_stack_a_sorted(t_pushswap *data);
+t_bool		order_first_two(t_pushswap *data);
 
 // insertion_sort_utils.c
 int			search_min_value(t_list *a, int sorted);

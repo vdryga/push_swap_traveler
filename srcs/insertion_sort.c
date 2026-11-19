@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 17:13:48 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:03:50 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	middle_insert(t_pushswap *data, int sorted, int value_b)
 		count++;
 	}
 	push_a(data);
-	multi_rotations(data, count + 1, 'a');
-	return ;
+	if (!is_stack_a_sorted(data))
+		multi_rotations(data, count + 1, 'a');
 }
 
 static void	min_insert(t_pushswap *data, int min_sorted)
@@ -62,7 +62,8 @@ static void	min_insert(t_pushswap *data, int min_sorted)
 		count++;
 	}
 	push_a(data);
-	multi_rotations(data, count + 1, 'a');
+	if (!is_stack_a_sorted(data))
+		multi_rotations(data, count + 1, 'a');
 }
 
 static void	search_right_insert(int sorted, t_pushswap *data)
@@ -74,12 +75,12 @@ static void	search_right_insert(int sorted, t_pushswap *data)
 	value_b = *(int *)data->stack_b->content;
 	max_sorted = search_max_value(data->stack_a);
 	min_sorted = search_min_value(data->stack_a, sorted);
-	if (value_b > max_sorted)
-	{
-		push_a(data);
-		rotate_a(data);
-		return ;
-	}
+	if (value_b > max_sorted)	//
+	{							//
+		push_a(data);			//  très probablement du code mort (à tester)
+		rotate_a(data);			//
+		return ;				//
+	}							//
 	if (value_b < min_sorted)
 		min_insert(data, min_sorted);
 	else
@@ -90,19 +91,21 @@ void	insertion_sort(t_pushswap *data, int size)
 {
 	int	sorted;
 
-	sorted = 0;
-	if (*(int *)data->stack_a->content > *(int *)data->stack_a->next->content)
-	{
-		swap_a(data);
-		multi_rotations(data, 2, 'a');
-	}
-	else
-		multi_rotations(data, 2, 'a');
+	if (order_first_two(data))
+		return ;
 	sorted = 2;
 	while (sorted < size)
 	{
-		push_b(data);
-		search_right_insert(sorted, data);
+		if (*(int *)data->stack_a->content
+			< *(int *)lstnprev(data->stack_a, 1)->content)
+		{
+			push_b(data);
+			search_right_insert(sorted, data);
+		}
+		else
+			rotate_a(data);
+		if (is_stack_a_sorted(data))
+			return ;
 		sorted++;
 	}
 }
