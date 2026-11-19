@@ -6,20 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 18:40:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/19 10:49:00 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_data(t_pushswap *data)
-{
-	free(data->config);
-	ft_lstclear(&data->stack_a, &del_list);
-	ft_lstclear(&data->stack_b, &del_list);
-	ft_lstclear(&data->instructions, &del_list);
-	free(data);
-}
 
 void	print_instruction_list(t_pushswap *data)
 {
