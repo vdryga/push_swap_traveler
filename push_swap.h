@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 14:26:55 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:38:05 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void		print_config(t_config *config);
 void		printf_stacks(t_pushswap *data);
 
 // main.c
-void	print_instruction_list(t_pushswap *data);
+void		print_instruction_list(t_pushswap *data);
 
 // frees.c
 void		free_data(t_pushswap *data);

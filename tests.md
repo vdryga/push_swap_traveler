@@ -18,7 +18,5 @@
 ./push_swap --bench --bench
 ./push_swap "1 2 4 3 56 7"
 ./push_swap --2
-./push_swap "--2"
 ./push_swap 1r 3 2 4
 ./push_swap 1 r 3 2 4
-./push_swap
