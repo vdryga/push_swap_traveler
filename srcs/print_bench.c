@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 16:48:29 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:54:05 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	print_strategy(t_pushswap *data)
 		else if (data->config->disorder >= 0.2 && data->config->disorder < 0.5)
 			ft_printf(2, " O(n√n)");
 		else if (data->config->disorder >= 0.5)
-			ft_printf(2, " O(n log n) ");
+			ft_printf(2, " O(n log n)");
 	}
 	ft_printf(2, "\n");
 }
