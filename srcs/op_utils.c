@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:51:57 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/16 10:18:53 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:09:44 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*get_instr_str(int instr)
 {
-	char	*str = NULL;
+	char	*str;
 
 	str = NULL;
 	if (instr == SA)
@@ -56,7 +56,7 @@ int	add_instr(t_list **instructions, int instr)
 	return (0);
 }
 
-void multi_rotations(t_pushswap *data, int rotations, char stack)
+void	multi_rotations(t_pushswap *data, int rotations, char stack)
 {
 	while (rotations > 0)
 	{
@@ -68,7 +68,7 @@ void multi_rotations(t_pushswap *data, int rotations, char stack)
 	}
 }
 
-void reverse_multi_rotations(t_pushswap *data, int rotations, char stack)
+void	reverse_multi_rotations(t_pushswap *data, int rotations, char stack)
 {
 	while (rotations < 0)
 	{
