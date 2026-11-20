@@ -111,7 +111,12 @@ After you start it with arguments, it waits for the operations to launch (sa, sb
 - [Insertion sort (wiki)](https://en.wikipedia.org/wiki/Insertion_sort)
 - [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort)
 - [LSD Radix Sort](https://www.geeksforgeeks.org/dsa/radix-sort/)
+  For the rest, we relied on our peers and our knowledge.
 
-### USE of AI
+## Contributions
 
-AI was partialy used when no one was around to explain certain concepts.
+### _vldryga_
+
+AI was partialy used when no one was around to explain certain concepts.  
+I contributed especially to code the parser, the insertion and the radix sort, the checker (and its header file) and the disorder count.
+I partly contributed to the devlopement of the main, the header files and the Makefile. During the checker program, I addapted a part of code of _arbernade_.
