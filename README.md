@@ -54,6 +54,55 @@ For this reason there is little reason to use radix on almost sorted lists, or i
 
 ## Instructions
 
+### Execution
+
+If you want to use the push_swap programm to sort to stacks, clone this repository.  
+To obtain the executable, run `make` in your terminal in the right folder.  
+If you change something in the files you need to use `make` again.  
+If you want to remote object files, please run `make clean`.  
+And, finally, if you need to delete object files and excutables please run `make fclean` : it will remove object files if there are some left and the static libs `libft.a` and `libftprintf.a` (used in the project).
+
+### Input
+
+The executable works only with this kind of input :
+
+```bash
+$> ./push_swap 1 5 3 4 2
+$> ./push_swap "-5" "6" " -1" "    02" "0"
+$> ./push_swap --bench 1 4 2 5 6
+$> ./push_swap 1 5 4 --simple 6 3
+```
+
+The program will return an error if those are not respected. Exemple of invalid input :
+
+```bash
+$> ./push_swap
+$> ./push_swap "-5 54 42" "6 0 45" " -1" "    02" "0" ""
+$> ./push_swap 1 1 1 1 1
+$> ./push_swap 1 5 4 --simple --medium
+$> ./push_swap 3 2 one 0
+```
+
+### Checker (optional functionality)
+
+The checker should be compiled with the command `make bonus` that calls for related files needed by the checker.
+
+##### Use of checker
+
+The checker is used to verify if the operations given by the push_swap excutable. The checker program takes as arguments the same inputs but the flags that aren't usefull here.
+
+Exemples of inputs :
+
+```bash
+$> ./checker
+$> ./checker "-5 54 42" "6 0 45" " -1" "    02" "0" ""
+$> ./checker 1 1 1 1 1
+$> ./checker 1 5 4 --simple
+$> ./checker 3 2 one 0
+```
+
+After you start it with arguments, it waits for the operations to launch (sa, sb, ss, ra, rb, rr, pa, pb, rra, rrb, rrr). Then, the checker verifies if the stacks as sorted from the minimun value (on top) to the max.
+
 ## Ressources
 
 ### For algorithms mostly
