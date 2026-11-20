@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 11:57:57 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 12:18:13 by vldryga          ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -97,9 +97,9 @@ static void	check_result(t_pushswap *data, t_list **instructions)
 	if (error == -1)
 		msg_error();
 	else if (error == 0)
-		ft_printf("KO\n");
+		ft_printf(1, "KO\n");
 	else
-		ft_printf("OK\n");
+		ft_printf(1, "OK\n");
 }
 
 int	main(int ac, char **av)

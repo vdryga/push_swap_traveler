@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 16:59:19 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 15:59:24 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 12:15:28 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ typedef struct s_format
 	size_t			written;
 }	t_frm;
 
-int		ft_printf(const char *str, ...);
+int		ft_printf(int fd, const char *str, ...);
 
 /* ================== formating functions =============== */
-void	formating_chars(const char *str, va_list list, t_frm *a);
-void	formating_nb(const char *str, va_list arg, t_frm *a);
-void	formating_hexa(const char *str, va_list arg, t_frm *a);
+void	formating_chars(const char *str, va_list list, t_frm *a, int fd);
+void	formating_nb(const char *str, va_list arg, t_frm *a, int fd);
+void	formating_hexa(const char *str, va_list arg, t_frm *a, int fd);
 
 #endif
