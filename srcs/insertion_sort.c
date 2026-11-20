@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 14:14:37 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 16:00:44 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,6 @@ static void	search_right_insert(int sorted, t_pushswap *data)
 	value_b = data->stack_b->index;
 	max_sorted = search_max_value(data->stack_a);
 	min_sorted = search_min_value(data->stack_a, sorted);
-	if (value_b > max_sorted)	//
-	{							//
-		push_a(data);			//  très probablement du code mort (à tester)
-		rotate_a(data);			//
-		return ;				//
-	}							//
 	if (value_b < min_sorted)
 		min_insert(data, min_sorted);
 	else
