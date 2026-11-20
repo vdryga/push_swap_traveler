@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 16:46:20 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:48:29 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	print_bench(t_pushswap *data)
 	ft_printf(2, " pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
 	ft_printf(2, "[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
 	ft_printf(2, " rra: %d rrb: %d ", ops.revrt_a, ops.revrt_b);
-	ft_printf(2, "rrr %d\n", ops.revrt_ab);
+	ft_printf(2, "rrr: %d\n", ops.revrt_ab);
 }
