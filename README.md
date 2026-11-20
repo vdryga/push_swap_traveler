@@ -113,3 +113,5 @@ After you start it with arguments, it waits for the operations to launch (sa, sb
 - [LSD Radix Sort](https://www.geeksforgeeks.org/dsa/radix-sort/)
 
 ### USE of AI
+
+AI was partialy used when no one was around to explain certain concepts.
