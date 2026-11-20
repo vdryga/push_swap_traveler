@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 09:53:48 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 12:17:19 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ static void	print_disorder(t_pushswap *data)
 
 	decimal = (int)(data->config->disorder * 100);
 	left = ((data->config->disorder * 100) - decimal) * 100;
-	ft_printf("[bench] disorder:  %d.%d%%\n", decimal, (int)left);
+	ft_printf(2, "[bench] disorder:  %d.%d%%\n", decimal, (int)left);
 }
 
 static void	print_strategy(t_pushswap *data)
 {
-	ft_printf("[bench] ");
+	ft_printf(2, "[bench] ");
 	if (data->config->flag_simple)
-		ft_printf("strategy : Simple / O(n^2)");
+		ft_printf(2, "strategy : Simple / O(n^2)");
 	else if (data->config->flag_medium)
-		ft_printf("startegy : Medium / O(n√n)");
+		ft_printf(2, "strategy : Medium / O(n√n)");
 	else if (data->config->flag_complex)
-		ft_printf("strategy : Complex / O(n log n)");
+		ft_printf(2, "strategy : Complex / O(n log n)");
 	else
 	{
-		ft_printf("startegy : Adaptive ");
+		ft_printf(2, "startegy : Adaptive ");
 		if (data->config->disorder < 0.2)
-			ft_printf("O(n^2)");
+			ft_printf(2, "O(n^2)");
 		else if (data->config->disorder <= 0.2 && data->config->disorder < 0.5)
-			ft_printf("O(n√n)");
+			ft_printf(2, "O(n√n)");
 		else if (data->config->disorder >= 0.5)
-			ft_printf(" O(n log n) ");
+			ft_printf(2, " O(n log n) ");
 	}
-	ft_printf("\n");
+	ft_printf(2, "\n");
 }
 
 static void	ops_browsing(t_ops *counts, char *curr)
@@ -91,10 +91,10 @@ void	print_bench(t_pushswap *data)
 	print_strategy(data);
 	ft_bzero(&ops, sizeof(t_ops));
 	count_ops(data->instructions, &ops);
-	ft_printf("[bench] total_ops: %d\n", ops.total);
-	ft_printf("[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
-	ft_printf(" pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
-	ft_printf("[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
-	ft_printf(" rra: %d rrb: %d ", ops.revrt_a, ops.revrt_b);
-	ft_printf("rrr %d\n", ops.revrt_ab);
+	ft_printf(2, "[bench] total_ops: %d\n", ops.total);
+	ft_printf(2, "[bench] sa: %d sb: %d ss: %d", ops.sw_a, ops.sw_b, 0);
+	ft_printf(2, " pa: %d pb: %d\n", ops.psh_a, ops.psh_b);
+	ft_printf(2, "[bench] ra: %d rb: %d rr: %d", ops.rt_a, ops.rt_b, ops.rt_ab);
+	ft_printf(2, " rra: %d rrb: %d ", ops.revrt_a, ops.revrt_b);
+	ft_printf(2, "rrr %d\n", ops.revrt_ab);
 }

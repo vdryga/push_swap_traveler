@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 13:54:35 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 12:19:14 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_instruction_list(t_pushswap *data)
 	instr = data->instructions;
 	while (instr)
 	{
-		ft_printf("%s\n", (char *)instr->content);
+		ft_printf(1, "%s\n", (char *)instr->content);
 		instr = instr->next;
 	}
 }
