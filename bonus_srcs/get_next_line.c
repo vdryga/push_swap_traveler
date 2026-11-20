@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:21:53 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 18:09:15 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 11:24:26 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,13 @@ static char	*fill_line(char *line, char *buffer, int len)
 	back = (char *)ft_calloc(len + 2, sizeof(char));
 	if (!back)
 		return (line);
-	if (line && buffer)
+	if (buffer)
 	{
-		back = copy_ongoing(line, back);
-		free(line);
+		if (line)
+		{
+			back = copy_ongoing(line, back);
+			free(line);
+		}
 		back = copy_ongoing(buffer, back);
 	}
 	return (back);

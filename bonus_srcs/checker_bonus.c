@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 18:35:14 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 11:57:57 by vldryga          ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,24 +45,27 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 static int	execute_instructions(t_pushswap *data, t_list *instructions)
 {
 	t_list	*head;
+	int 	error;
 
 	head = instructions;
 	while (head)
 	{
 		if (!parse_instructions(head, data))
-		{
-			msg_error();
-			ft_lstclear(&instructions, del_list);
-			return (0);
-		}
+			return (-1);
 		head = head->next;
 	}
-	if (!check_order(data->stack_a))
+	if (data->stack_a && !data->stack_b)
+	{
+		error = check_order(data->stack_a);
+		if (error == 0)
+			return (0);
+	}
+	else
 		return (0);
 	return (1);
 }
 
-static int	get_instructions(t_list *instructions)
+static int	get_instructions(t_list **instructions)
 {
 	char		*instr;
 
@@ -70,22 +73,30 @@ static int	get_instructions(t_list *instructions)
 	instr = get_next_line(0);
 	while (instr)
 	{
-		bonus_add_instr(&instructions, instr);
+		bonus_add_instr(instructions, ft_strdup(instr));
 		if (!instructions)
 		{
 			msg_error();
-			ft_lstclear(&instructions, del_list);
+			if (instr)
+				free(instr);
+			ft_lstclear(instructions, del_list);
 			return (1);
 		}
 		printf("%s\n", instr);
+		free(instr);
 		instr = get_next_line(0);
 	}
 	return (0);
 }
 
-static void	check_result(t_pushswap *data, t_list *instructions)
+static void	check_result(t_pushswap *data, t_list **instructions)
 {
-	if (!execute_instructions(data, instructions))
+	int	error;
+
+	error = execute_instructions(data, *instructions);
+	if (error == -1)
+		msg_error();
+	else if (error == 0)
 		ft_printf("KO\n");
 	else
 		ft_printf("OK\n");
@@ -103,20 +114,15 @@ int	main(int ac, char **av)
 	}
 	data = pushswap_init();
 	data->stack_a = parser(av, data->config);
-	if (!data->stack_a)
+	if (!data->stack_a || has_duplicate(data->stack_a))
 	{
 		msg_error();
 		free_all(data);
 		return (1);
 	}
 	instructions = NULL;
-	if (get_instructions(instructions))
-	{
-		ft_lstclear(&instructions, del_list);
-		free_all(data);
-		return (1);
-	}
-	check_result(data, instructions);
+	if (!get_instructions(&instructions))
+		check_result(data, &instructions);
 	ft_lstclear(&instructions, del_list);
 	free_all(data);
 	return (0);
