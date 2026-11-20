@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/20 14:54:16 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/20 16:07:18 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC :=	main.c \
 		op_rotate.c \
 		op_utils.c \
 		op_optimize.c \
+		op_optimize_utils.c \
 		rotation_list_utils.c \
 		indexer.c \
 		index_utils.c \

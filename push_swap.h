@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 15:45:19 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:16:10 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,9 @@ t_list		*create_rotation_list(t_ops *rotations);
 
 // op_optimize.c
 int			optimize_rotations(t_list **op_lst);
+
+// op_optimize_utils.c
+void		add_rotation(t_ops *rotations, char *str);
 
 // lst_utils.c
 t_list		*lstnnext(t_list *node, int offset);

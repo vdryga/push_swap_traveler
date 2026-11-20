@@ -6,27 +6,11 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 09:43:50 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 13:53:29 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 16:07:27 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	add_rotation(t_ops *rotations, char *str)
-{
-	if (!ft_strcmp(str, "ra"))
-		rotations->rt_a++;
-	else if (!ft_strcmp(str, "rb"))
-		rotations->rt_b++;
-	else if (!ft_strcmp(str, "rra"))
-		rotations->revrt_a++;
-	else if (!ft_strcmp(str, "rrb"))
-		rotations->revrt_b++;
-	else if (!ft_strcmp(str, "rr"))
-		rotations->rt_ab++;
-	else if (!ft_strcmp(str, "rrr"))
-		rotations->revrt_ab++;
-}
 
 static t_list	*new_rot_sequence(t_ops *rot)
 {
@@ -83,7 +67,8 @@ static t_list	*optimize(t_list **op_lst, t_list *start, t_ops *rot)
 	return (*op_lst);
 }
 
-static int	optimize_loop(t_list *node, t_list **next, t_list **op_lst, t_ops *ops)
+static int	optimize_loop(t_list *node, t_list **next,
+	t_list **op_lst, t_ops *ops)
 {
 	static t_bool	in_rotation = FALSE;
 	static t_list	*start = NULL;
