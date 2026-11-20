@@ -3,21 +3,50 @@ _This project has been created as part of the 42 curriculum by vldryga and arber
 # PUSH SWAP
 
 for imag need to use ![alt](url)
-fo link [txtx][id]
+to link [txtx][id]
+
+###### Content
 
 ## Description
 
 The _push swap_ project aim was to create a programm that sorts sets of numbers of integer range (from -2147483648 to 2147483647) using only two stacks.
 
-The programm takes as arguments numbers given by the user in the terminal. Then, it stores them on a stack that will be use by three algorithms of different complexity. Once the parsing of the numbers is done then, the sort starts. The algorithm's type is chosen accordingly with the flags the user gave :
+The programm takes as arguments numbers given by the user in the terminal. Then, it stores them on a stack that will be use by three algorithms of different complexity. Once the parsing of the numbers is done then, the sort starts. The algorithm's type is chosen accordingly with the flags the user gave.
 
-| FLAG      | Description                                      |
-| --------- | ------------------------------------------------ |
-| --simple  | The algorithm's complexity is of type O(n^2)     |
-| --medium  | The algorithm's complexity is of type O(n√n)     |
-| --complex | The algorithm's complexity is of type O(n log n) |
-| --adaptiv |                                                  |
-| --bench   |                                                  |
+#### Algorithm's complexity
+
+One the main concepts of this project is **[algorithmic complexity](https://en.wikipedia.org/wiki/Analysis_of_algorithms)** (process of finding the computational complexity of algorithms). So, it estimates the amount of time, storage and other ressources needed by the algorithm.  
+To do so, the big O notation is used (mainly to describe the time or space complexity). This notation describes what is called an **asymptotic behaviour** which is an order of growth accordingly to the input. It is mostly used to compare the effeciency of algorithms. The notation provides a maximum limit that may be needed by the algorithm according to the input. The big O notation is used to ascertain the time complexity of the worst case senario.
+
+For the simple algorithm in the O(n^2), we chosed the insertion sort adaptation.  
+For the medium algorithm in the O(n√n), we chosed the bucket sort adaptation with √n buckets.
+For the complex algorithm in the O(n log n), we chosed the radix sort adaptation (LSD).
+
+#### Flags description
+
+| FLAG      | Description                                                                                                                                                                                                                                                                              |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --simple  | The algorithm's complexity is of type O(n^2).                                                                                                                                                                                                                                            |
+| --medium  | The algorithm's complexity is of type O(n√n).                                                                                                                                                                                                                                            |
+| --complex | The algorithm's complexity is of type O(n log n).                                                                                                                                                                                                                                        |
+| --adaptiv | The algorithm's complexity is determined by the **disorder of the list**. If the disorder is less than 0.2 then the simple algorithm is launched, if it's less then 0.5 then the medium one is launched. And, if the disorder is bigger than 0.5 then the complex algorithm is launched. |
+| --bench   | The `--bench` flag goes with or without the others. It displays the disorder, the strategy name, the total number of operations and the count of each operation.                                                                                                                         |
+
+#### The operations allowed
+
+| operations | description                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| sa         | (swap a): Swap the first two elements at the top of stack a.                                           |
+| sb         | (swap b): Swap the first two elements at the top of stack b.                                           |
+| ss         | sa and sb at the same time.                                                                            |
+| pa         | (push a): Take the first element at the top of b and put it at the top of a. Do nothing if b is empty. |
+| pb         | (push b): Take the first element at the top of a and put it at the top of b. Do nothing if a is empty. |
+| ra         | (rotate a): Shift up all elements of stack a by one.The first element becomes the last one.            |
+| rb         | (rotate b): Shift up all elements of stack b by one. The first element becomes the last one.           |
+| rr         | ra and rb at the same time.                                                                            |
+| rra        | (reverse rotate a): Shift down all elements of stack a by one.                                         |
+| rrb        | (reverse rotate b): Shift down all elements of stack b by one.                                         |
+| rrr        | rra and rrb at the same time                                                                           |
 
 ## Instructions
 
@@ -25,6 +54,7 @@ The programm takes as arguments numbers given by the user in the terminal. Then,
 
 ### For algorithms mostly
 
+- [Big O notation](https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/)
 - [Insertion sort (wiki)](https://en.wikipedia.org/wiki/Insertion_sort)
 
-## USE of AI
+### USE of AI
