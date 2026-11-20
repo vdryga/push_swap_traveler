@@ -13,7 +13,7 @@ The _push swap_ project aim was to create a programm that sorts sets of numbers 
 
 The programm takes as arguments numbers given by the user in the terminal. Then, it stores them on a stack that will be use by three algorithms of different complexity. Once the parsing of the numbers is done then, the sort starts. The algorithm's type is chosen accordingly with the flags the user gave.
 
-#### Algorithm's complexity
+### Algorithm's complexity
 
 One the main concepts of this project is **[algorithmic complexity](https://en.wikipedia.org/wiki/Analysis_of_algorithms)** (process of finding the computational complexity of algorithms). So, it estimates the amount of time, storage and other ressources needed by the algorithm.  
 To do so, the big O notation is used (mainly to describe the time or space complexity). This notation describes what is called an **asymptotic behaviour** which is an order of growth accordingly to the input. It is mostly used to compare the effeciency of algorithms. The notation provides a maximum limit that may be needed by the algorithm according to the input. The big O notation is used to ascertain the time complexity of the worst case senario.
@@ -22,17 +22,26 @@ For the simple algorithm in the O(n^2), we chosed the insertion sort adaptation.
 For the medium algorithm in the O(n√n), we chosed the bucket sort adaptation with √n buckets.
 For the complex algorithm in the O(n log n), we chosed the radix sort adaptation (LSD).
 
-#### Flags description
+### Flags description
 
 | FLAG      | Description                                                                                                                                                                                                                                                                              |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --simple  | The algorithm's complexity is of type O(n^2).                                                                                                                                                                                                                                            |
-| --medium  | The algorithm's complexity is of type O(n√n).                                                                                                                                                                                                                                            |
-| --complex | The algorithm's complexity is of type O(n log n).                                                                                                                                                                                                                                        |
+| --simple  | Use an [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) method. The algorithm's time complexity is O(n^2). Space complexity is O(n).                                                                                                                                       |
+| --medium  | Use a [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) method with √n buckets. The algorithm's time complexity is O(n√n). Space complexity is O(n).                                                                                                                              |
+| --complex | Use a base 2 [LSD Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) method. The algorithm's time complexity is O(n log n). Space complexity is O(n).                                                                                                                                 |
 | --adaptiv | The algorithm's complexity is determined by the **disorder of the list**. If the disorder is less than 0.2 then the simple algorithm is launched, if it's less then 0.5 then the medium one is launched. And, if the disorder is bigger than 0.5 then the complex algorithm is launched. |
 | --bench   | The `--bench` flag goes with or without the others. It displays the disorder, the strategy name, the total number of operations and the count of each operation.                                                                                                                         |
 
-#### The operations allowed
+#### About --adaptativ thresholds
+
+Some algorithms perform much worst or much better in worst/best case scenario.  
+For instance Insertion Sort performs much better almost sorted input:  
+![Graph showing average instruction counts for 50% and 10% disorder, for input size up to 200](readme_assets/inserstion_sort.png)
+
+Radix sort, on the other hand performs the same on any disorder values.  
+For this reason there is little reason to use radix on almost sorted lists, or insertion sort on list with medium or high disorder.
+
+### The operations allowed
 
 | operations | description                                                                                            |
 | ---------- | ------------------------------------------------------------------------------------------------------ |
