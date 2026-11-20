@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 12:18:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 13:52:05 by vldryga          ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,7 +45,7 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 static int	execute_instructions(t_pushswap *data, t_list *instructions)
 {
 	t_list	*head;
-	int 	error;
+	int		error;
 
 	head = instructions;
 	while (head)
@@ -114,7 +114,8 @@ int	main(int ac, char **av)
 	}
 	data = pushswap_init();
 	data->stack_a = parser(av, data->config);
-	if (!data->stack_a || has_duplicate(data->stack_a))
+	if (!data->stack_a || has_duplicate(data->stack_a)
+		|| !has_no_flags(data->config))
 	{
 		msg_error();
 		free_all(data);

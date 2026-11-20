@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:21:53 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 11:24:26 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 15:06:02 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,13 @@ static void	remove_next_line(char *buffer, int next)
 
 static char	*check_line(int fd, char *line, char *buf, int *browsed)
 {
-	if (buf[0] != '\0')
-	{
-		line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
-		if (!line)
-		{
-			remove_next_line(buf, find_next_line(buf));
-			return (0);
-		}
-	}
 	if (buf[0] == '\0')
-	{
 		*browsed = read(fd, buf, BUFFER_SIZE);
-		line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
-		if (!line)
-		{
-			remove_next_line(buf, find_next_line(buf));
-			return (0);
-		}
+	line = fill_line(line, buf, find_next_line(buf) + ft_strlen(line));
+	if (!line)
+	{
+		remove_next_line(buf, find_next_line(buf));
+		return (0);
 	}
 	return (line);
 }

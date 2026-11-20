@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 09:52:20 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 15:45:19 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> //à enlever !!!
 # include "libft/libft.h"
 # include "printf/ft_printf.h"
 
@@ -87,21 +86,6 @@ typedef struct s_turk
 	int	a_value;
 	int	current;
 }	t_turk;
-
-/**
- *	/!\ TO BE DELETED /!\
- * 	test_utils.c functions and bitflags
- */
-#define PRINT_NB 1
-#define PRINT_IDX 2
-#define PRINT_BUCKET 4
-#define PRINT_INSTRUCTIONS 8
-#define PRINT_PREVISION_A 16
-#define PRINT_PREVISION_B 32
-
-void		print_stacks(t_pushswap *data, int bitflags);
-void		print_config(t_config *config);
-void		printf_stacks(t_pushswap *data);
 
 // main.c
 void		print_instruction_list(t_pushswap *data);
