@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 09:52:20 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:06:57 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,6 @@ typedef struct s_turk
 	int	current;
 }	t_turk;
 
-/**
- *	/!\ TO BE DELETED /!\
- * 	test_utils.c functions and bitflags
- */
-#define PRINT_NB 1
-#define PRINT_IDX 2
-#define PRINT_BUCKET 4
-#define PRINT_INSTRUCTIONS 8
-#define PRINT_PREVISION_A 16
-#define PRINT_PREVISION_B 32
-
 void		print_stacks(t_pushswap *data, int bitflags);
 void		print_config(t_config *config);
 void		printf_stacks(t_pushswap *data);
@@ -146,6 +135,9 @@ t_list		*create_rotation_list(t_ops *rotations);
 
 // op_optimize.c
 int			optimize_rotations(t_list **op_lst);
+
+// op_optimize_utils.c
+void		add_rotation(t_ops *rotations, char *str);
 
 // lst_utils.c
 t_list		*lstnnext(t_list *node, int offset);
