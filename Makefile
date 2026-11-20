@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/18 17:52:21 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/20 14:54:16 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,11 @@ LIBFT := $(LIBFT_PATH)/libft.a
 PRINTF_PATH := printf
 PRINTF := $(PRINTF_PATH)/libftprintf.a
 
-# PENSER A ENLEVER test_utils.c
 SRC :=	main.c \
 		frees.c \
 		parser.c \
 		math_utils.c \
 		lst_utils.c \
-		test_utils.c \
 		disorder.c \
 		error.c \
 		op_push_swap.c \
@@ -51,7 +49,6 @@ SRC :=	main.c \
 		print_bench.c \
 		radix.c \
 
-# PENSER A ENLEVER test_utils.c
 BONUS_SRC := checker_bonus.c \
 				checker_utils_bonus.c \
 				bonus_utils.c \
