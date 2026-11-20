@@ -2,11 +2,6 @@ _This project has been created as part of the 42 curriculum by vldryga and arber
 
 # PUSH SWAP
 
-for imag need to use ![alt](url)
-to link [txtx][id]
-
-###### Content
-
 ## Description
 
 The _push swap_ project aim was to create a programm that sorts sets of numbers of integer range (from -2147483648 to 2147483647) using only two stacks.
@@ -65,5 +60,7 @@ For this reason there is little reason to use radix on almost sorted lists, or i
 
 - [Big O notation](https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/)
 - [Insertion sort (wiki)](https://en.wikipedia.org/wiki/Insertion_sort)
+- [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort)
+- [LSD Radix Sort](https://www.geeksforgeeks.org/dsa/radix-sort/)
 
 ### USE of AI
