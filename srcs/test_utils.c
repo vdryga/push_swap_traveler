@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 09:32:26 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 18:40:26 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 10:30:46 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_config(t_config *config)
 	ft_printf("flag_simple:\t%d\n", config->flag_simple);
 	ft_printf("flag_medium:\t%d\n", config->flag_medium);
 	ft_printf("flag_complex:\t%d\n", config->flag_complex);
-	ft_printf("flag_adaptative:\t%d\n", config->flag_adaptative);
+	ft_printf("flag_adaptative:\t%d\n", config->flag_adaptive);
 	ft_printf("flag_bench:\t%d\n", config->flag_bench);
 	ft_printf("disorder:\t%f\n\n", config->disorder);
 }
