@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 12:18:13 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:16:57 by arbernad         ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,7 +45,7 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 static int	execute_instructions(t_pushswap *data, t_list *instructions)
 {
 	t_list	*head;
-	int 	error;
+	int		error;
 
 	head = instructions;
 	while (head)
