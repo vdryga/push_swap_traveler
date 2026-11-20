@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 10:50:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:21:07 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 09:53:48 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	print_strategy(t_pushswap *data)
 		ft_printf("strategy : Complex / O(n log n)");
 	else
 	{
-		ft_printf("startegy : Adaptative ");
+		ft_printf("startegy : Adaptive ");
 		if (data->config->disorder < 0.2)
 			ft_printf("O(n^2)");
 		else if (data->config->disorder <= 0.2 && data->config->disorder < 0.5)

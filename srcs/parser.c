@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/18 16:42:44 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 09:53:28 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static t_bool	set_flags(char *str, t_config *flags)
 		flags->flag_medium = 1;
 	else if (!ft_strcmp(str, "--complex"))
 		flags->flag_complex = 1;
-	else if (!ft_strcmp(str, "--adaptative"))
-		flags->flag_adaptative = 1;
+	else if (!ft_strcmp(str, "--adaptive"))
+		flags->flag_adaptive = 1;
 	else
 		return (FALSE);
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/19 14:38:05 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 09:52:20 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_config
 	t_bool	flag_simple;
 	t_bool	flag_medium;
 	t_bool	flag_complex;
-	t_bool	flag_adaptative;
+	t_bool	flag_adaptive;
 	t_bool	flag_bench;
 	float	disorder;
 }	t_config;

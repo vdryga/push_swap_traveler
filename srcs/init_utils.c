@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 16:28:45 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/17 16:38:45 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/20 09:53:06 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_config	*config_init(void)
 	config = (t_config *)malloc(sizeof(t_config));
 	if (!config)
 		return (NULL);
-	config->flag_adaptative = 0;
+	config->flag_adaptive = 0;
 	config->flag_bench = 0;
 	config->flag_complex = 0;
 	config->flag_medium = 0;

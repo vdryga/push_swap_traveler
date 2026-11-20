@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 14:45:51 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/18 12:53:54 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/20 09:52:50 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	has_flag_error(t_config *config)
 {
 	int	flag_count;
 
-	flag_count = config->flag_adaptative;
+	flag_count = config->flag_adaptive;
 	flag_count += config->flag_simple;
 	flag_count += config->flag_medium;
 	flag_count += config->flag_complex;
