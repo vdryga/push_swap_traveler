@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 09:14:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/12 11:36:16 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:15:06 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 typedef struct s_ops
 {
 	int	sw_a;
-	int sw_b;
-	int psh_a;
-	int psh_b;
+	int	sw_b;
+	int	psh_a;
+	int	psh_b;
 	int	rt_a;
 	int	rt_b;
 	int	rt_ab;
-	int revrt_a;
+	int	revrt_a;
 	int	revrt_b;
 	int	revrt_ab;
 	int	total;
@@ -92,7 +92,6 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),	\
 					void (*del)(void *));
 unsigned int	ft_lstsize(t_list *lst);
-
 
 /* post added functions */
 int				ft_isspace(int c);
