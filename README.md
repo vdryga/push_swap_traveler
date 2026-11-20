@@ -108,7 +108,7 @@ After you start it with arguments, it waits for the operations to launch (sa, sb
 ### For algorithms mostly
 
 - [Big O notation](https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/)
-- [Insertion sort (wiki)](https://en.wikipedia.org/wiki/Insertion_sort)
+- [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
 - [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort)
 - [LSD Radix Sort](https://www.geeksforgeeks.org/dsa/radix-sort/)
   For the rest, we relied on our peers and our knowledge.
@@ -119,4 +119,8 @@ After you start it with arguments, it waits for the operations to launch (sa, sb
 
 AI was partialy used when no one was around to explain certain concepts.  
 I contributed especially to code the parser, the insertion and the radix sort, the checker (and its header file) and the disorder count.
-I partly contributed to the devlopement of the main, the header files and the Makefile. During the checker program, I addapted a part of code of _arbernade_.
+I partly contributed to the devlopement of the main, the header files and the Makefile. During the checker program, I addapted a part of code of _arbernad_.
+
+### _arbernad_
+
+Contributed mainly to the stack manipulation functions (sa, sb, ra, etc...), various utils and test functions / tools, the Bucket Sort algorithm and optimized the output instruction list by merging instructions when possible.
