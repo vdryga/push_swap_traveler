@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 16:16:10 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/21 14:27:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,6 @@ typedef struct s_pushswap
 	int			a_size;
 	int			b_size;
 }	t_pushswap;
-
-typedef struct s_turk
-{
-	int	b_max;
-	int	b_min;
-	int	a_value;
-	int	current;
-}	t_turk;
 
 // main.c
 void		print_instruction_list(t_pushswap *data);
@@ -206,10 +198,5 @@ int			search_biggest_index(t_list *a);
 
 //turkish_sort.c
 void		turk_sort(t_pushswap *data);
-
-// turkish_utils.c
-int			count_moves_for_one(t_pushswap *data, t_turk *info, int rotations);
-void		count_reverse_a(t_pushswap *data, t_ops *c);
-void		count_reverse_b(t_pushswap *data, t_ops *c);
 
 #endif

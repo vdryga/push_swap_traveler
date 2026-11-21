@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:02:28 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 15:46:04 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/21 14:39:58 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ t_bool	is_an_instruction(char *str);
 void	free_all(t_pushswap *data);
 t_bool	has_no_flags(t_config *flags);
 
+
 // get_next_line_utils.c
 int		bonus_add_instr(t_list **instructions, char *instr);
 size_t	find_next_line(const char *str);
-int		is_a_new_line(char *str);
+char	*copy_ongoing(char *src, char *dest);
 
 // get_next_line.c
 char	*get_next_line(int fd);
