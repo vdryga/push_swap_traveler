@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/20 16:07:18 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/21 17:52:21 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC :=	main.c \
 
 BONUS_SRC := checker_bonus.c \
 				checker_utils_bonus.c \
+				checker_instructions.c \
 				bonus_utils.c \
 				init_utils.c \
 				parser.c \
@@ -59,8 +60,6 @@ BONUS_SRC := checker_bonus.c \
 				op_utils.c \
 				op_rotate.c \
 				op_push_swap.c \
-				get_next_line.c \
-				get_next_line_utils.c \
 				frees.c
 
 BONUS_SRCS := $(BONUS_SRCS:%.c=$(BONUS_SRC_DIR)/%.c)

@@ -6,19 +6,26 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 16:46:15 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 14:38:58 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/21 17:51:32 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	free_all(t_pushswap *data)
+void	free_all(char **tab)
 {
-	free(data->config);
-	ft_lstclear(&data->stack_a, &del_list);
-	ft_lstclear(&data->stack_b, &del_list);
-	ft_lstclear(&data->instructions, &del_list);
-	free(data);
+	int	i;
+
+	if (!tab)
+		return ;
+	if (!*tab)
+		free(tab);
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
 }
 
 t_bool	has_no_flags(t_config *flags)

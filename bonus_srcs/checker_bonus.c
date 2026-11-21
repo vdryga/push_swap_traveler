@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 16:18:23 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/21 17:51:14 by vldryga          ###   ########.fr       */
 /*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -63,61 +63,6 @@ static int	execute_instructions(t_pushswap *data, t_list *instructions)
 	else
 		return (0);
 	return (1);
-}
-
-static char	*fill_instructions(int fd)
-{
-	char	*ret;
-	char	*temp;
-	char	buf[BUFFER_SIZE + 1];
-	int		bytes_read;
-
-	ret = NULL;
-	temp = NULL;
-	bytes_read = read(fd, buf, BUFFER_SIZE);
-	while (ret || bytes_read > 0)
-	{
-		temp = ft_strdup(ret);
-		free(ret);
-		ret = ft_calloc(ft_strlen(buf) + ft_strlen(ret), sizeof(char));
-		if (!ret)
-		{
-			free(temp);
-			return (NULL);
-		}
-		ret = ft_strjoin(buf, temp);
-		free(temp);
-		ft_memset(buf, 0, BUFFER_SIZE + 1);
-		bytes_read = read(fd, buf, BUFFER_SIZE);
-	}
-	return (ret);
-}
-
-static int	get_instructions(t_list **instructions)
-{
-	char		*instr;
-	char		**all_instr;
-	int			i;
-
-	instr = NULL;
-	instr = fill_instructions(0);
-	all_instr = ft_split(instr, '\n');
-	free(instr);
-	i = 0;
-	while (all_instr)
-	{
-		bonus_add_instr(instructions, all_instr[i]);
-		if (!instructions)
-		{
-			msg_error();
-			if (instr)
-				free(instr);
-			ft_lstclear(instructions, del_list);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
 }
 
 static void	check_result(t_pushswap *data, t_list **instructions)

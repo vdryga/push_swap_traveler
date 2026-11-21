@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:02:28 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 14:39:58 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/21 17:53:52 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,14 @@ void	ss(t_pushswap *data);
 void	rr(t_pushswap *data);
 void	rrr(t_pushswap *data);
 int		check_order(t_list *a);
-t_bool	is_an_instruction(char *str);
 
 // bonus_utils.c
-void	free_all(t_pushswap *data);
+void	free_all(char **tab);
 t_bool	has_no_flags(t_config *flags);
 
-
-// get_next_line_utils.c
-int		bonus_add_instr(t_list **instructions, char *instr);
-size_t	find_next_line(const char *str);
-char	*copy_ongoing(char *src, char *dest);
-
-// get_next_line.c
-char	*get_next_line(int fd);
+// checker_instructions.c
+char	*create_the_dup(char **str);
+char	*fill_instructions(int fd);
+int		get_instructions(t_list **instructions);
 
 #endif
