@@ -39,7 +39,7 @@ char	*fill_instructions(int fd)
 	while (ret || bytes_read > 0)
 	{
 		temp = create_the_dup(&ret);
-		ret = ft_strjoin(buf, temp);
+		ret = ft_strjoin(temp, buf);
 		if (!ret)
 		{
 			free(temp);
