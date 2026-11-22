@@ -28,10 +28,10 @@ char	*create_the_dup(char **str)
 
 char	*fill_instructions(int fd)
 {
-	char	*ret;
-	char	*temp;
-	char	buf[BUFFER_SIZE + 1];
-	int		bytes_read;
+	char		*ret;
+	char		*temp;
+	static char	buf[BUFFER_SIZE + 1] = {0};
+	int			bytes_read;
 
 	ret = NULL;
 	temp = NULL;
@@ -63,7 +63,7 @@ static int	bonus_add_instr(t_list **instructions, char *instr)
 	if (!instr)
 		return (1);
 	len = ft_strlen(instr);
-	if (instr[len - 1] == '\n')
+	if (len > 0 && instr[len - 1] == '\n')
 		ft_memset(instr + (len - 1), 0, 2);
 	node = ft_lstnew(instr);
 	if (!node)

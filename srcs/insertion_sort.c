@@ -69,11 +69,11 @@ static void	min_insert(t_pushswap *data, int min_sorted)
 static void	search_right_insert(int sorted, t_pushswap *data)
 {
 	int	value_b;
-	int	max_sorted;
+	//int	max_sorted;
 	int	min_sorted;
 
 	value_b = data->stack_b->index;
-	max_sorted = search_max_value(data->stack_a);
+	//max_sorted = search_max_value(data->stack_a);
 	min_sorted = search_min_value(data->stack_a, sorted);
 	if (value_b < min_sorted)
 		min_insert(data, min_sorted);

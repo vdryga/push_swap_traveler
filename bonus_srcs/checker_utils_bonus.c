@@ -38,12 +38,12 @@ int	check_order(t_list *a)
 
 	head = a;
 	prev = *(int *)a->content;
-	while (a)
+	while (head)
 	{
-		a = a->next;
-		if (!a)
+		head = head->next;
+		if (!head)
 			return (1);
-		curr = *(int *)a->content;
+		curr = *(int *)head->content;
 		if (prev > curr)
 			return (0);
 		prev = curr;
