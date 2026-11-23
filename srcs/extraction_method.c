@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 13:05:05 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/23 14:15:08 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 14:20:10 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	extraction_method(t_pushswap *data)
 		push_b(data);
 		smallest++;
 	}
-	while(data->stack_b)
+	while (data->stack_b)
 		push_a(data);
 }
