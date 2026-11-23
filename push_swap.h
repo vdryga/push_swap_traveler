@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 13:45:10 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 13:48:24 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ t_list		*lstnprev(t_list *node, int offset);
 int			ft_abs(int n);
 int			ft_sqrt(int n);
 int			max(int a, int b);
-int			min(int a, int b);
 
 // print_bench.c
 void		print_bench(t_pushswap *data);
