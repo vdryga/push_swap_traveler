@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 09:03:37 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 13:45:10 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,5 @@ int			search_max_value(t_list *a);
 
 // radix.c
 void		radix(t_pushswap *data);
-int			search_biggest_index(t_list *a);
 
 #endif
