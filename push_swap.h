@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 13:52:25 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 14:17:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,5 @@ void		extraction_method(t_pushswap *data);
 
 // radix.c
 void		radix(t_pushswap *data);
-int			search_biggest_index(t_list *a);
 
 #endif

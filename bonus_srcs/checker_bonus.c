@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 11:20:23 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 13:52:37 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 
 static int	parse_instructions(t_list *head, t_pushswap *data)
 {
-	if (!ft_strcmp(head->content, "sa"))
-		swap_a(data);
-	else if (!ft_strcmp(head->content, "sb"))
-		swap_b(data);
-	else if (!ft_strcmp(head->content, "ss"))
-		ss(data);
-	else if (!ft_strcmp(head->content, "ra"))
+	if (parse_swaps(head, data))
+		return (1);
+	else if (!ft_strcmp(head->content, "ra") && data->stack_a)
 		rotate_a(data);
-	else if (!ft_strcmp(head->content, "rb"))
+	else if (!ft_strcmp(head->content, "rb") && data->stack_b)
 		rotate_b(data);
-	else if (!ft_strcmp(head->content, "rr"))
+	else if (!ft_strcmp(head->content, "rr") && data->stack_a && data->stack_b)
 		rr(data);
 	else if (!ft_strcmp(head->content, "pa"))
 		push_a(data);
 	else if (!ft_strcmp(head->content, "pb"))
 		push_b(data);
-	else if (!ft_strcmp(head->content, "rrb"))
+	else if (!ft_strcmp(head->content, "rrb") && data->stack_b)
 		reverse_rotate_b(data);
-	else if (!ft_strcmp(head->content, "rra"))
+	else if (!ft_strcmp(head->content, "rra") && data->stack_a)
 		reverse_rotate_a(data);
-	else if (!ft_strcmp(head->content, "rrr"))
+	else if (!ft_strcmp(head->content, "rrr") && data->stack_a && data->stack_b)
 		rrr(data);
 	else
 		return (0);
