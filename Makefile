@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/21 17:52:21 by vldryga          ###   ########.fr        #
+#    Updated: 2026/11/23 13:53:45 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC :=	main.c \
 		lst_utils.c \
 		disorder.c \
 		error.c \
+		extraction_method.c \
 		op_push_swap.c \
 		op_rotate.c \
 		op_utils.c \

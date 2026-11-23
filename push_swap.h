@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 10:48:31 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 13:52:25 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,11 +191,12 @@ t_bool		order_first_two(t_pushswap *data);
 int			search_min_value(t_list *a, int sorted);
 int			search_max_value(t_list *a);
 
+// extraction_method.c
+void		extraction_method(t_pushswap *data);
+
+
 // radix.c
 void		radix(t_pushswap *data);
 int			search_biggest_index(t_list *a);
-
-//turkish_sort.c
-void		turk_sort(t_pushswap *data);
 
 #endif

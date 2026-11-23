@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 13:25:29 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 13:53:15 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void	print_instruction_list(t_pushswap *data)
 	}
 }
 
+static void	simple_algo(t_pushswap *data)
+{
+	if (data->a_size <= 10)
+		extraction_method(data);
+	else
+		insertion_sort(data, data->a_size);
+}
+
 static void	start_sorting(t_pushswap *data, t_config *info)
 {
 	if (info->disorder == 0 || data->a_size <= 1)
@@ -34,7 +42,7 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 		exit(0);
 	}
 	if (info->flag_simple)
-		insertion_sort(data, data->a_size);
+		simple_algo(data);
 	else if (info->flag_medium)
 		bucket_sort(data);
 	else if (info->flag_complex)
@@ -42,7 +50,7 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 	else
 	{
 		if (info->disorder < 0.2)
-			insertion_sort(data, data->a_size);
+			simple_algo(data);
 		if (info->disorder >= 0.2 && info->disorder < 0.5)
 			bucket_sort(data);
 		if (info->disorder >= 0.5)
