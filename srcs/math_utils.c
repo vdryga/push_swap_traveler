@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 12:55:22 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/11 17:27:52 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 10:48:31 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,6 @@ int	ft_abs(int n)
 int	max(int a, int b)
 {
 	if (a >= b)
-		return (a);
-	return (b);
-}
-
-int	min(int a, int b)
-{
-	if (a <= b)
 		return (a);
 	return (b);
 }
