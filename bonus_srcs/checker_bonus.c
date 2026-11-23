@@ -6,36 +6,57 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 17:51:14 by vldryga          ###   ########.fr       */
-/*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 10:04:41 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
+static int	parse_swaps(t_list *head, t_pushswap *data)
+{
+	int	size_a;
+	int	size_b;
+
+	size_a = ft_lstsize(data->stack_a);
+	size_b = ft_lstsize(data->stack_b);
+	if (!ft_strcmp(head->content, "sa") && (size_a >= 2))
+	{
+		swap_a(data);
+		return (1);
+	}
+	else if (!ft_strcmp(head->content, "sb") && (size_b >= 2))
+	{
+		swap_b(data);
+		return (1);
+	}
+	else if (!ft_strcmp(head->content, "ss") && (size_a >= 2 && size_b >= 2))
+	{
+		ss(data);
+		return (1);
+	}
+	else
+		return (0);
+}
+
 static int	parse_instructions(t_list *head, t_pushswap *data)
 {
-	if (!ft_strcmp(head->content, "sa"))
-		swap_a(data);
-	else if (!ft_strcmp(head->content, "sb") && data->stack_b)
-		swap_b(data);
-	else if (!ft_strcmp(head->content, "ss") && data->stack_b && data->stack_a)
-		ss(data);
-	else if (!ft_strcmp(head->content, "ra"))
+	if (parse_swaps(head, data))
+		return (1);
+	else if (!ft_strcmp(head->content, "ra") && data->stack_a)
 		rotate_a(data);
-	else if (!ft_strcmp(head->content, "rb"))
+	else if (!ft_strcmp(head->content, "rb") && data->stack_b)
 		rotate_b(data);
-	else if (!ft_strcmp(head->content, "rr"))
+	else if (!ft_strcmp(head->content, "rr") && data->stack_a && data->stack_b)
 		rr(data);
 	else if (!ft_strcmp(head->content, "pa") && data->stack_b)
 		push_a(data);
 	else if (!ft_strcmp(head->content, "pb") && data->stack_a)
 		push_b(data);
-	else if (!ft_strcmp(head->content, "rrb"))
+	else if (!ft_strcmp(head->content, "rrb") && data->stack_b)
 		reverse_rotate_b(data);
-	else if (!ft_strcmp(head->content, "rra"))
+	else if (!ft_strcmp(head->content, "rra") && data->stack_a)
 		reverse_rotate_a(data);
-	else if (!ft_strcmp(head->content, "rrr"))
+	else if (!ft_strcmp(head->content, "rrr") && data->stack_a && data->stack_b)
 		rrr(data);
 	else
 		return (0);
