@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 08:44:32 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/20 16:00:44 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 13:38:05 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ static void	min_insert(t_pushswap *data, int min_sorted)
 static void	search_right_insert(int sorted, t_pushswap *data)
 {
 	int	value_b;
-	//int	max_sorted;
 	int	min_sorted;
 
 	value_b = data->stack_b->index;
-	//max_sorted = search_max_value(data->stack_a);
 	min_sorted = search_min_value(data->stack_a, sorted);
 	if (value_b < min_sorted)
 		min_insert(data, min_sorted);
@@ -90,10 +88,14 @@ void	insertion_sort(t_pushswap *data, int size)
 	sorted = 2;
 	while (sorted < size)
 	{
+		if (data->stack_a->index > data->stack_a->next->index)
+			swap_a(data);
 		if (data->stack_a->index < lstnprev(data->stack_a, 1)->index)
 		{
 			push_b(data);
 			search_right_insert(sorted, data);
+			if (is_stack_a_sorted(data))
+				return ;
 		}
 		else
 			rotate_a(data);

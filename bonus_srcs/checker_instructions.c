@@ -6,11 +6,37 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 17:53:57 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 13:52:33 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+
+int	parse_swaps(t_list *head, t_pushswap *data)
+{
+	int	size_a;
+	int	size_b;
+
+	size_a = ft_lstsize(data->stack_a);
+	size_b = ft_lstsize(data->stack_b);
+	if (!ft_strcmp(head->content, "sa") && (size_a >= 2))
+	{
+		swap_a(data);
+		return (1);
+	}
+	else if (!ft_strcmp(head->content, "sb") && (size_b >= 2))
+	{
+		swap_b(data);
+		return (1);
+	}
+	else if (!ft_strcmp(head->content, "ss") && (size_a >= 2 && size_b >= 2))
+	{
+		ss(data);
+		return (1);
+	}
+	else
+		return (0);
+}
 
 char	*create_the_dup(char **str)
 {
@@ -74,7 +100,6 @@ static int	bonus_add_instr(t_list **instructions, char *instr)
 	ft_lstadd_back(instructions, node);
 	return (0);
 }
-
 
 int	get_instructions(t_list **instructions)
 {
