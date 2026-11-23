@@ -6,8 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 17:51:14 by vldryga          ###   ########.fr       */
-/*   Updated: 2026/11/18 10:20:12 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/23 11:20:23 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +16,9 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 {
 	if (!ft_strcmp(head->content, "sa"))
 		swap_a(data);
-	else if (!ft_strcmp(head->content, "sb") && data->stack_b)
+	else if (!ft_strcmp(head->content, "sb"))
 		swap_b(data);
-	else if (!ft_strcmp(head->content, "ss") && data->stack_b && data->stack_a)
+	else if (!ft_strcmp(head->content, "ss"))
 		ss(data);
 	else if (!ft_strcmp(head->content, "ra"))
 		rotate_a(data);
@@ -27,9 +26,9 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 		rotate_b(data);
 	else if (!ft_strcmp(head->content, "rr"))
 		rr(data);
-	else if (!ft_strcmp(head->content, "pa") && data->stack_b)
+	else if (!ft_strcmp(head->content, "pa"))
 		push_a(data);
-	else if (!ft_strcmp(head->content, "pb") && data->stack_a)
+	else if (!ft_strcmp(head->content, "pb"))
 		push_b(data);
 	else if (!ft_strcmp(head->content, "rrb"))
 		reverse_rotate_b(data);
@@ -42,6 +41,14 @@ static int	parse_instructions(t_list *head, t_pushswap *data)
 	return (1);
 }
 
+static int	skip(t_list *node, t_pushswap *data)
+{
+	if ((!ft_strcmp(node->content, "pa") && !data->stack_b)
+		|| (!ft_strcmp(node->content, "pb") && !data->stack_a))
+		return (1);
+	return (0);
+}
+
 static int	execute_instructions(t_pushswap *data, t_list *instructions)
 {
 	t_list	*head;
@@ -50,8 +57,11 @@ static int	execute_instructions(t_pushswap *data, t_list *instructions)
 	head = instructions;
 	while (head)
 	{
-		if (!parse_instructions(head, data))
-			return (-1);
+		if (!skip(head, data))
+		{
+			if (!parse_instructions(head, data))
+				return (-1);
+		}
 		head = head->next;
 	}
 	if (data->stack_a && !data->stack_b)

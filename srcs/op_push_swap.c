@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 10:26:38 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/19 15:30:03 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/23 11:12:45 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	swap_a(t_pushswap *data)
 {
 	t_list	*second_node;
 
+	if (!data->stack_a || !data->stack_a->next)
+		return ;
 	second_node = data->stack_a->next;
 	if (second_node->next)
 		second_node->next->prev = second_node->prev;
@@ -91,6 +93,8 @@ void	swap_b(t_pushswap *data)
 {
 	t_list	*second_node;
 
+	if (!data->stack_b || !data->stack_b->next)
+		return ;
 	second_node = data->stack_b->next;
 	if (second_node->next)
 		second_node->next->prev = second_node->prev;
