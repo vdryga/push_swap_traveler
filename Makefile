@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/23 13:53:45 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/24 08:02:19 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC :=	main.c \
 		insertion_sort_utils.c \
 		print_bench.c \
 		radix.c \
+		sort_3.c
 
 BONUS_SRC := checker_bonus.c \
 				checker_utils_bonus.c \

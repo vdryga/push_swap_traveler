@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 16:39:08 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/24 08:01:38 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static void	start_sorting(t_pushswap *data, t_config *info)
 		radix(data);
 	else
 	{
-		/*if (data->a_size < 4)
-			triple_sort();
-		else*/if (info->disorder < 0.2 || data->a_size <= 10)
+		if (data->a_size <= 3)
+			sort_3(data);
+		else if (info->disorder < 0.2 || data->a_size <= 10)
 			simple_algo(data);
 		else if (info->disorder >= 0.2 && info->disorder < 0.5)
 			bucket_sort(data);
