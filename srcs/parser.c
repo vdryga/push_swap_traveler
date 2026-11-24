@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+static void	free_all(char **tab)
+{
+	int	i;
+
+	if (!tab)
+		return ;
+	if (!*tab)
+		free(tab);
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+}
+
 static t_bool	set_flags(char *str, t_config *flags)
 {
 	if (!ft_strcmp(str, "--bench"))
@@ -68,12 +84,31 @@ static int	check_errors(t_config *flags, t_list *head)
 static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
 {
 	int		*converted;
+	int		j;
+	char	**splitted;
 	t_list	*new;
 
-	converted = (int *)malloc(sizeof(int));
-	converted[0] = ft_atoi(av[i]);
-	new = ft_lstnew(converted);
-	ft_lstadd_back(&head, new);
+	splitted = ft_split(av[i], ' ');
+	if (!splitted)
+		return (NULL);
+	j = 0;
+	while (splitted[j])
+	{
+		if (!str_is_digit(splitted[j]) || ft_strlen(splitted[j]) == 0)
+		{
+			free_all(splitted);
+			free(splitted);
+			ft_lstclear(&head, del_list);
+			return (NULL);
+		}
+		converted = (int *)malloc(sizeof(int));
+		converted[0] = ft_atoi(splitted[j]);
+		new = ft_lstnew(converted);
+		ft_lstadd_back(&head, new);
+		j++;
+	}
+	free_all(splitted);
+	free(splitted);
 	return (head);
 }
 
@@ -90,11 +125,6 @@ t_list	*parser(char **av, t_config *flags)
 		{
 			i++;
 			continue ;
-		}
-		if (!str_is_digit(av[i]) || ft_strlen(av[i]) == 0)
-		{
-			ft_lstclear(&head, del_list);
-			return (NULL);
 		}
 		head = create_node_in_stack_a(head, av, i);
 		i++;
