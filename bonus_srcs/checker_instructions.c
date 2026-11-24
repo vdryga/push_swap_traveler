@@ -113,7 +113,7 @@ int	get_instructions(t_list **instructions)
 	if (instr)
 		free(instr);
 	i = 0;
-	while (all_instr[i])
+	while (all_instr && all_instr[i])
 	{
 		bonus_add_instr(instructions, ft_strdup(all_instr[i]));
 		if (!instructions)
