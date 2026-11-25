@@ -88,7 +88,7 @@ $> ./push_swap "4 5 --simple 8 1"
 ### Checker (optional functionality)
 
 The checker should be compiled with the command `make bonus` that calls for related files needed by the checker.  
-To use it, you need to call the executable `./checker` after the compilation and give it the expected arguments listed in the section below.
+To use it, you need to call the executable `./checker` after the compilation and give it the **expected same arguments as the `./push_swap`'s**, otherwise it won't work proprely !
 
 ##### Use of checker
 

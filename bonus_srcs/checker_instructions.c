@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 13:52:33 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/25 15:44:16 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*fill_instructions(int fd)
 
 	ret = NULL;
 	temp = NULL;
-	bytes_read = read(fd, buf, BUFFER_SIZE);
+	bytes_read = read(fd, buf, BUFFER_SIZE); //@inf : proteger le read.
 	while (ret || bytes_read > 0)
 	{
 		temp = create_the_dup(&ret);
@@ -109,6 +109,8 @@ int	get_instructions(t_list **instructions)
 
 	instr = NULL;
 	instr = fill_instructions(0);
+	if (!instr)
+		return (1);
 	all_instr = ft_split(instr, '\n');
 	if (instr)
 		free(instr);

@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/25 12:36:32 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/25 16:29:15 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,20 @@ static void	free_parsed(char **split)
 	free(split);
 }
 
-static void	single_node(char *split, t_list **head)
+static int	single_node(char *split, t_list **head)
 {
 	int		*converted;
 	t_list	*new;
 
 	converted = (int *)malloc(sizeof(int));
+	if (!converted)
+		return (0);
 	converted[0] = ft_atoi(split);
 	new = ft_lstnew(converted);
+	if (!new)
+		return (0);
 	ft_lstadd_back(head, new);
+	return (1);
 }
 
 static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
@@ -47,13 +52,12 @@ static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
 	j = 0;
 	while (split[j])
 	{
-		if (!str_is_digit(split[j]) || ft_strlen(split[j]) == 0)
+		if (!str_is_digit(split[j]) || ft_strlen(split[j]) == 0 || !single_node(split[j], &head))
 		{
 			free_parsed(split);
 			ft_lstclear(&head, del_list);
 			return (NULL);
 		}
-		single_node(split[j], &head);
 		j++;
 	}
 	free_parsed(split);
@@ -67,7 +71,7 @@ t_list	*parser(char **av, t_config *flags)
 
 	i = 1;
 	head = NULL;
-	while (av[i] != NULL)
+	while (av && av[i])
 	{
 		if (set_flags(av[i], flags) == TRUE)
 		{

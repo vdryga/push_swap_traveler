@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:18 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/24 16:29:42 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/25 16:22:05 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	print_instruction_list(t_pushswap *data)
 	t_list	*instr;
 
 	instr = data->instructions;
+	if (!instr)
+		return ;
 	while (instr)
 	{
 		ft_printf(1, "%s\n", (char *)instr->content);
