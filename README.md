@@ -70,6 +70,7 @@ The executable works only with this kind of input :
 ```bash
 $> ./push_swap 1 5 3 4 2
 $> ./push_swap "-5" "6" " -1 8 56" "    02" "0"
+$> ./push_swap $(echo "2\v3\r0")
 $> ./push_swap --bench 1 4 2 5 6
 $> ./push_swap 1 5 4 --simple 6 3
 ```
