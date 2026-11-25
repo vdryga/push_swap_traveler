@@ -6,41 +6,40 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/25 09:57:52 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/25 12:36:32 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_all(char **tab)
+static void	free_parsed(char **split)
 {
 	int	i;
 
-	if (!tab)
-		return ;
-	if (!*tab)
-		free(tab);
 	i = 0;
-	while (tab[i])
+	while (split && split[i])
 	{
-		free(tab[i]);
+		free(split[i]);
 		i++;
 	}
+	free(split);
 }
 
-static void	free_parsed(char **split, t_list *head)
+static void	single_node(char *split, t_list **head)
 {
-	free_all(split);
-	free(split);
-	ft_lstclear(&head, del_list);
+	int		*converted;
+	t_list	*new;
+
+	converted = (int *)malloc(sizeof(int));
+	converted[0] = ft_atoi(split);
+	new = ft_lstnew(converted);
+	ft_lstadd_back(head, new);
 }
 
 static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
 {
-	int		*converted;
 	int		j;
 	char	**split;
-	t_list	*new;
 
 	split = ft_split(av[i], ' ');
 	if (!split)
@@ -50,17 +49,14 @@ static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
 	{
 		if (!str_is_digit(split[j]) || ft_strlen(split[j]) == 0)
 		{
-			free_parsed(split, head);
+			free_parsed(split);
+			ft_lstclear(&head, del_list);
 			return (NULL);
 		}
-		converted = (int *)malloc(sizeof(int));
-		converted[0] = ft_atoi(split[j]);
-		new = ft_lstnew(converted);
-		ft_lstadd_back(&head, new);
+		single_node(split[j], &head);
 		j++;
 	}
-	free_all(split);
-	free(split);
+	free_parsed(split);
 	return (head);
 }
 
@@ -79,6 +75,8 @@ t_list	*parser(char **av, t_config *flags)
 			continue ;
 		}
 		head = create_node_in_stack_a(head, av, i);
+		if (!head)
+			return (NULL);
 		i++;
 	}
 	if (check_errors(flags, head))
