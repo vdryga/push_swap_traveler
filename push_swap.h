@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:32:21 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/24 08:02:00 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/25 09:45:52 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ t_pushswap	*pushswap_init(void);
 // parser.c
 t_list		*parser(char **av, t_config *flags);
 double		disorder(t_list *list_a, unsigned int size);
+
+// parser_utils.c
+int			str_is_digit(char *str);
+t_bool		set_flags(char *str, t_config *flags);
+int			check_errors(t_config *flags, t_list *head);
 
 // error.c
 t_bool		has_flag_error(t_config *config);
@@ -198,6 +203,6 @@ void		extraction_method(t_pushswap *data);
 void		radix(t_pushswap *data);
 
 // sort_3.c
-void	sort_3(t_pushswap *data);
+void		sort_3(t_pushswap *data);
 
 #endif

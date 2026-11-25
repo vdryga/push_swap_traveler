@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/24 08:02:19 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/25 09:59:10 by arbernad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ PRINTF := $(PRINTF_PATH)/libftprintf.a
 SRC :=	main.c \
 		frees.c \
 		parser.c \
+		parser_utils.c \
 		math_utils.c \
 		lst_utils.c \
 		disorder.c \
@@ -58,6 +59,7 @@ BONUS_SRC := checker_bonus.c \
 				bonus_utils.c \
 				init_utils.c \
 				parser.c \
+				parser_utils.c \
 				error.c \
 				op_utils.c \
 				op_rotate.c \
