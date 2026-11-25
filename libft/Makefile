@@ -6,7 +6,7 @@
 #    By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/23 11:23:32 by vldryga           #+#    #+#              #
-#    Updated: 2026/11/04 15:19:12 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/25 14:14:14 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS := ft_isalpha.c \
 		ft_isalnum.c \
 		ft_isascii.c \
 		ft_isprint.c \
+		ft_isspace.c \
 		ft_strlen.c \
 		ft_memset.c \
 		ft_bzero.c \
@@ -58,7 +59,6 @@ SRCS := ft_isalpha.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 		ft_atoll.c \
-		ft_isspace.c \
 		ft_strcmp.c
 
 OBJS := $(SRCS:.c=.o)

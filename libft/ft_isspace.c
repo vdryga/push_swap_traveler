@@ -6,11 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 08:14:00 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/02 08:15:06 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/25 14:21:46 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_ispace(int c)
+int	ft_isspace(int c)
 {
 	if (c == ' ' || (c >= '\t' && c <= '\r'))
 		return (1);

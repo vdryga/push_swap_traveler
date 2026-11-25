@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 15:38:20 by vldryga           #+#    #+#             */
-/*   Updated: 2026/10/26 17:05:45 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/25 14:21:31 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ static int	count_words(char const *s, char c)
 	i = 0;
 	count = 0;
 	in_word = 0;
+	(void)c;
 	while (s[i])
 	{
-		if (s[i] != c && in_word == 0)
+		if (!ft_isspace(s[i]) && in_word == 0)
 			in_word = 1;
-		if ((s[i] == c || s[i + 1] == '\0') && in_word == 1)
+		if ((ft_isspace(s[i]) || s[i + 1] == '\0') && in_word == 1)
 		{
 			count++;
 			in_word = 0;
@@ -42,13 +43,14 @@ static char	*word_dupp(char const *s, char c)
 	char	*dest;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	(void)c;
+	while (s[len] && !ft_isspace(s[len]))
 		len++;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
 		return (NULL);
 	i = 0;
-	while (s[i] && s[i] != c)
+	while (s[i] && !ft_isspace(s[i]))
 	{
 		dest[i] = s[i];
 		i++;
@@ -77,7 +79,7 @@ static char	**get_words(int words, char **ret, const char *s, char c)
 	j = 0;
 	while (j < words)
 	{
-		while (*s && *s == c)
+		while (*s && ft_isspace(*s))
 			s++;
 		ret[j] = word_dupp(s, c);
 		if (!ret[j])
@@ -86,7 +88,7 @@ static char	**get_words(int words, char **ret, const char *s, char c)
 			return (NULL);
 		}
 		j++;
-		while (*s && *s != c)
+		while (*s && !ft_isspace(*s))
 			s++;
 	}
 	return (ret);

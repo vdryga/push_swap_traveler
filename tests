@@ -11,6 +11,10 @@
 ./push_swap "1 2 0" one
 ./push_swap "1\t0\t3\t4"
 ./push_swap "2\v3\r4" "1 9 8"
-./push_swap +2 +8 "-8 -9" "+5 -5"
 ./push_swap "a" "b" "c"
 ./push_swap "lalalalalallalala" "1 4" "lalalala"
+./push_swap
+
+
+./push_swap +2 +8 "-8 -9" "+5 -5"
+./push_swap $(echo "1\t2\r0\t\t\t\t\t\t\v\v\v\v")
