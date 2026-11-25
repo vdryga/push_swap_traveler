@@ -64,28 +64,30 @@ And, finally, if you need to delete object files and excutables please run `make
 
 ### Input
 
+To use it, you need to call the executable `./push_swap` after the compilation and give it the expected arguments listed below.
 The executable works only with this kind of input :
 
 ```bash
 $> ./push_swap 1 5 3 4 2
-$> ./push_swap "-5" "6" " -1" "    02" "0"
+$> ./push_swap "-5" "6" " -1 8 56" "    02" "0"
 $> ./push_swap --bench 1 4 2 5 6
 $> ./push_swap 1 5 4 --simple 6 3
 ```
 
-The program will return an error if those are not respected. Exemple of invalid input :
+The program will return an **error** if those are not respected. Exemple of invalid input :
 
 ```bash
 $> ./push_swap
-$> ./push_swap "-5 54 42" "6 0 45" " -1" "    02" "0" ""
 $> ./push_swap 1 1 1 1 1
 $> ./push_swap 1 5 4 --simple --medium
 $> ./push_swap 3 2 one 0
+$> ./push_swap "4 5 --simple 8 1"
 ```
 
 ### Checker (optional functionality)
 
-The checker should be compiled with the command `make bonus` that calls for related files needed by the checker.
+The checker should be compiled with the command `make bonus` that calls for related files needed by the checker.  
+To use it, you need to call the executable `./checker` after the compilation and give it the expected arguments listed in the section below.
 
 ##### Use of checker
 
@@ -103,7 +105,7 @@ $> ./checker 3 2 one 0
 
 After you start it with arguments, it waits for the operations to launch (sa, sb, ss, ra, rb, rr, pa, pb, rra, rrb, rrr). Then, the checker verifies if the stacks as sorted from the minimun value (on top) to the max.
 
-## Ressources
+## Resources
 
 ### For algorithms mostly
 
@@ -115,11 +117,17 @@ After you start it with arguments, it waits for the operations to launch (sa, sb
 
 ## Contributions
 
+### Acknowledgments
+
+Thanks to all our correctors with fixed some of the programed bugs e it,
+
 ### _vldryga_
 
 AI was partialy used when no one was around to explain certain concepts.  
 I contributed especially to code the parser, the insertion and the radix sort, the checker (and its header file) and the disorder count.
-I partly contributed to the devlopement of the main, the header files and the Makefile. During the checker program, I addapted a part of code of _arbernad_.
+
+> version 0.1: Fixed problems with the parser and gestion of the malloc.
+> I partly contributed to the devlopement of the main, the header files and the Makefile. During the checker program, I addapted a part of code of _arbernad_.
 
 ### _arbernad_
 
