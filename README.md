@@ -11,26 +11,26 @@ The programm takes as arguments numbers given by the user in the terminal. Then,
 ### Algorithm's complexity
 
 One the main concepts of this project is **[algorithmic complexity](https://en.wikipedia.org/wiki/Analysis_of_algorithms)** (process of finding the computational complexity of algorithms). So, it estimates the amount of time, storage and other ressources needed by the algorithm.  
-To do so, the big O notation is used (mainly to describe the time or space complexity). This notation describes what is called an **asymptotic behaviour** which is an order of growth accordingly to the input. It is mostly used to compare the effeciency of algorithms. The notation provides a maximum limit that may be needed by the algorithm according to the input. The big O notation is used to ascertain the time complexity of the worst case senario.
+To do so, the big O notation is used to describe the time and space complexity. This notation describes what is called an **asymptotic behaviour** which is an order of growth accordingly to the input. It is mostly used to compare the efficiency of algorithms. The notation provides a maximum limit that may be needed by the algorithm according to the input. The big O notation is used to ascertain the time complexity of the worst case senario.
 
-For the simple algorithm in the O(n^2), we chosed the insertion sort adaptation.  
-For the medium algorithm in the O(n√n), we chosed the bucket sort adaptation with √n buckets.
-For the complex algorithm in the O(n log n), we chosed the radix sort adaptation (LSD).
+For the simple algorithm in the O(n^2), we chose the insertion sort adaptation.  
+For the medium algorithm in the O(n√n), we chose the bucket sort adaptation with √n buckets.
+For the complex algorithm in the O(n log n), we chose the radix sort adaptation (LSD).
 
 ### Flags description
 
-| FLAG      | Description                                                                                                                                                                                                                                                                              |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --simple  | Use an [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) method. The algorithm's time complexity is O(n^2). Space complexity is O(n).                                                                                                                                       |
-| --medium  | Use a [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) method with √n buckets. The algorithm's time complexity is O(n√n). Space complexity is O(n).                                                                                                                              |
-| --complex | Use a base 2 [LSD Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) method. The algorithm's time complexity is O(n log n). Space complexity is O(n).                                                                                                                                 |
-| --adaptiv | The algorithm's complexity is determined by the **disorder of the list**. If the disorder is less than 0.2 then the simple algorithm is launched, if it's less then 0.5 then the medium one is launched. And, if the disorder is bigger than 0.5 then the complex algorithm is launched. |
-| --bench   | The `--bench` flag goes with or without the others. It displays the disorder, the strategy name, the total number of operations and the count of each operation.                                                                                                                         |
+| FLAG       | Description                                                                                                                                                                                                                                                                              |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --simple   | Use an [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) method. The algorithm's time complexity is O(n^2). Space complexity is O(n).                                                                                                                                       |
+| --medium   | Use a [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) method with √n buckets. The algorithm's time complexity is O(n√n). Space complexity is O(n).                                                                                                                              |
+| --complex  | Use a base 2 [LSD Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) method. The algorithm's time complexity is O(n log n). Space complexity is O(n).                                                                                                                                 |
+| --adaptive | The algorithm's complexity is determined by the **disorder of the list**. If the disorder is less than 0.2 then the simple algorithm is launched, if it's less than 0.5 then the medium one is launched. And, if the disorder is bigger than 0.5 then the complex algorithm is launched. |
+| --bench    | The `--bench` flag goes with or without the others. It displays the disorder, the strategy name, the total number of operations and the count of each operation.                                                                                                                         |
 
-#### About --adaptativ thresholds
+#### About --adaptive thresholds
 
 Some algorithms perform much worst or much better in worst/best case scenario.  
-For instance Insertion Sort performs much better almost sorted input:  
+For instance Insertion Sort performs much better on almost sorted input:  
 ![Graph showing average instruction counts for 50% and 10% disorder, for input size up to 200](readme_assets/inserstion_sort.png)
 
 Radix sort, on the other hand performs the same no matter the initial disorder value.  
@@ -56,11 +56,11 @@ For this reason there is little reason to use radix on almost sorted lists, or i
 
 ### Execution
 
-If you want to use the push_swap programm to sort to stacks, clone this repository.  
+If you want to use the push_swap program to sort stacks, clone this repository.  
 To obtain the executable, run `make` in your terminal in the right folder.  
 If you change something in the files you need to use `make` again.  
 If you want to remote object files, please run `make clean`.  
-And, finally, if you need to delete object files and excutables please run `make fclean` : it will remove object files if there are some left and the static libs `libft.a` and `libftprintf.a` (used in the project).
+And, finally, if you need to delete object files and executables please run `make fclean` : it will remove object files if there are some left and the static libs `libft.a` and `libftprintf.a` (used in the project).
 
 ### Input
 
@@ -92,7 +92,7 @@ To use it, you need to call the executable `./checker` after the compilation and
 
 ##### Use of checker
 
-The checker is used to verify if the operations given by the push_swap excutable. The checker program takes as arguments the same inputs but the flags that aren't usefull here.
+The checker is used to verify if the operations given by the push_swap executable. The checker program takes as arguments the same inputs but the flags that aren't useful here.
 
 Exemples of inputs :
 
@@ -104,7 +104,7 @@ $> ./checker 1 5 4 --simple
 $> ./checker 3 2 one 0
 ```
 
-After you start it with arguments, it waits for the operations to launch (sa, sb, ss, ra, rb, rr, pa, pb, rra, rrb, rrr). Then, the checker verifies if the stacks as sorted from the minimun value (on top) to the max.
+After you start it with arguments, it reads the operations (sa, sb, ss, ra, rb, rr, pa, pb, rra, rrb, rrr) from stdin, one operation per line (empty lines are ignored). Then, the checker verifies if the stacks was sorted in ascending order.
 
 ## Resources
 
