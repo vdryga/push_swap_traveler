@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 10:36:59 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 10:53:30 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	get_instructions(t_list **instructions)
 		{
 			msg_error();
 			free_all(all_instr);
-			ft_lstclear(iinstructions, del_list);
+			ft_lstclear(instructions, del_list);
 			return (1);
 		}
 		i++;
