@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/25 15:44:16 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 10:10:27 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	parse_swaps(t_list *head, t_pushswap *data)
 
 	size_a = ft_lstsize(data->stack_a);
 	size_b = ft_lstsize(data->stack_b);
-	if (!ft_strcmp(head->content, "sa") && (size_a >= 2))
+	if (!ft_strcmp(head->content, "sa"))
 	{
 		swap_a(data);
 		return (1);
 	}
-	else if (!ft_strcmp(head->content, "sb") && (size_b >= 2))
+	else if (!ft_strcmp(head->content, "sb"))
 	{
 		swap_b(data);
 		return (1);
 	}
-	else if (!ft_strcmp(head->content, "ss") && (size_a >= 2 && size_b >= 2))
+	else if (!ft_strcmp(head->content, "ss"))
 	{
 		ss(data);
 		return (1);

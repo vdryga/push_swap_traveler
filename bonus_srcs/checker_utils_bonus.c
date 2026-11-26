@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:39:33 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 11:14:04 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/26 10:08:08 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	rr(t_pushswap *data)
 
 void	rrr(t_pushswap *data)
 {
-	reverse_rotate_a(data);
-	reverse_rotate_b(data);
+	if (data->stack_a && data->stack_a->next)
+		reverse_rotate_a(data);
+	if (data->stack_b && data->stack_b->next)
+		reverse_rotate_b(data);
 }
 
 void	ss(t_pushswap *data)
