@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:02:28 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 11:22:44 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 11:43:35 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	has_no_flags(t_config *flags);
 
 // checker_instructions.c
 char	*create_the_dup(char **str);
-char	*fill_instructions(int fd);
+char	*fill_instructions(int fd, t_bool *error);
 int		get_instructions(t_list **instructions, t_bool *error);
 int		parse_swaps(t_list *head, t_pushswap *data);
 

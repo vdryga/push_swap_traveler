@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 11:29:33 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 11:50:43 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,36 @@ char	*create_the_dup(char **str)
 	return (temp);
 }
 
-char	*fill_instructions(int fd)
+static char	*reading_ongoing(char *ret, char *buf, t_bool *error)
+{
+	char		*temp;
+
+	temp = create_the_dup(&ret);
+	ret = ft_strjoin(temp, buf);
+	if (!ret)
+	{
+		free(temp);
+		*error = TRUE;
+		return (NULL);
+	}
+	if (temp)
+		free(temp);
+	return (ret);
+}
+
+char	*fill_instructions(int fd, t_bool *error)
 {
 	char		*ret;
-	char		*temp;
 	static char	buf[BUFFER_SIZE + 1] = {0};
 	int			bytes_read;
 
 	ret = NULL;
-	temp = NULL;
 	bytes_read = read(fd, buf, BUFFER_SIZE); //@inf : proteger le read.
 	while (ret || bytes_read > 0)
 	{
-		temp = create_the_dup(&ret);
-		ret = ft_strjoin(temp, buf);
+		ret = reading_ongoing(ret, buf, error);
 		if (!ret)
-		{
-			free(temp);
 			return (NULL);
-		}
-		if (temp)
-			free(temp);
 		ft_memset(buf, 0, BUFFER_SIZE + 1);
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == 0)
@@ -121,7 +130,7 @@ int	get_instructions(t_list **instructions, t_bool *error)
 	int			i;
 
 	instr = NULL;
-	instr = fill_instructions(0);
+	instr = fill_instructions(0, error);
 	if (!instr)
 		return (1);
 	all_instr = original_split(instr, '\n');
