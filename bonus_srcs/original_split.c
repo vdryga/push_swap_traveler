@@ -6,9 +6,11 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 09:09:37 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 09:11:47 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 10:42:32 by arbernad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	count_words(char const *s, char c)
 {
