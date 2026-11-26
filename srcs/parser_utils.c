@@ -6,7 +6,7 @@
 /*   By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 09:41:48 by arbernad          #+#    #+#             */
-/*   Updated: 2026/11/25 09:45:45 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/26 09:33:58 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	str_is_digit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i]
-		&& (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r')))
+	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] && (str[i] == '-' || str[i] == '+'))
 		i++;
