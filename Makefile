@@ -6,7 +6,7 @@
 #    By: arbernad <arbernad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/29 08:35:39 by arbernad          #+#    #+#              #
-#    Updated: 2026/11/25 09:59:10 by arbernad         ###   ########.fr        #
+#    Updated: 2026/11/26 09:17:18 by vldryga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRC :=	main.c \
 BONUS_SRC := checker_bonus.c \
 				checker_utils_bonus.c \
 				checker_instructions.c \
+				original_split.c \
 				bonus_utils.c \
 				init_utils.c \
 				parser.c \

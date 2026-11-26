@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:10:30 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/25 16:29:15 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 10:30:32 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,17 @@ static int	single_node(char *split, t_list **head)
 	return (1);
 }
 
-static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
+static t_list	*create_node_in_stack_a(t_list *head, char **av, int i, t_bool *error)
 {
 	int		j;
 	char	**split;
 
 	split = ft_split(av[i], ' ');
 	if (!split)
+	{
+		*error = TRUE;
 		return (NULL);
+	}
 	j = 0;
 	while (split[j])
 	{
@@ -56,6 +59,7 @@ static t_list	*create_node_in_stack_a(t_list *head, char **av, int i)
 		{
 			free_parsed(split);
 			ft_lstclear(&head, del_list);
+			*error = TRUE;
 			return (NULL);
 		}
 		j++;
@@ -68,9 +72,11 @@ t_list	*parser(char **av, t_config *flags)
 {
 	int		i;
 	t_list	*head;
+	t_bool	error;
 
 	i = 1;
 	head = NULL;
+	error = FALSE;
 	while (av && av[i])
 	{
 		if (set_flags(av[i], flags) == TRUE)
@@ -78,8 +84,8 @@ t_list	*parser(char **av, t_config *flags)
 			i++;
 			continue ;
 		}
-		head = create_node_in_stack_a(head, av, i);
-		if (!head)
+		head = create_node_in_stack_a(head, av, i, &error);
+		if (!head && error == TRUE)
 			return (NULL);
 		i++;
 	}

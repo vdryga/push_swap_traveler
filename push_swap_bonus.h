@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:02:28 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/23 14:17:36 by arbernad         ###   ########.fr       */
+/*   Updated: 2026/11/26 09:17:24 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ char	*create_the_dup(char **str);
 char	*fill_instructions(int fd);
 int		get_instructions(t_list **instructions);
 int		parse_swaps(t_list *head, t_pushswap *data);
+
+// original_split.c
+char	**original_split(char const *s, char c);
 
 #endif

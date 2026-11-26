@@ -1,20 +1,62 @@
-./push_swap
-./push_swap ""
-./push_swap "" ""
-./push_swap "" "" "one"
-./push_swap "two" "1 3 0"
-./push_swap one
-./push_swap one 1 3 2
-./push_swap "one" 1 3 2
-./push_swap 1 2 2 3
-./push_swap one "1 2 0"
-./push_swap "1 2 0" one
-./push_swap "1\t0\t3\t4"
-./push_swap "2\v3\r4" "1 9 8"
-./push_swap "a" "b" "c"
-./push_swap "lalalalalallalala" "1 4" "lalalala"
-./push_swap
+
+valgrind ./push_swap
+valgrind ./push_swap ""
+valgrind ./push_swap "" ""
+valgrind ./push_swap "" "" "one"
+valgrind ./push_swap "two" "1 3 0"
+valgrind ./push_swap one
+valgrind ./push_swap one 1 3 2
+valgrind ./push_swap "" --complex
+valgrind ./push_swap "one" 1 3 2
+valgrind ./push_swap 1 2 2 3
+valgrind ./push_swap one "1 2 0"
+valgrind ./push_swap "1 2 0" one
+valgrind ./push_swap "1\t0\t3\t4"
+valgrind ./push_swap "2\v3\r4" "1 9 8"
+valgrind ./push_swap "a" "b" "c"
+valgrind ./push_swap "lalalalalallalala" "1 4" "lalalala"
+valgrind ./push_swap 2547861165166561 6561611131488161
+valgrind ./push_swap "1 2 5 4 " 25489612856315121
+valgrind ./push_swap "1 2 5 4 " 25489612856315121 ""
+
+valgrind ./push_swap +2 +8 "-8 -9" "+5 -5"
+valgrind ./push_swap "3 2" 1 "5 4"
+valgrind ./push_swap $(echo "1\t2\r0\t\t\t\t\t\t\v\v\v\v")
+valgrind ./push_swap $(echo "\v1\t2\r0\t\t\t\t\t\t\v\v\v\v")
+valgrind ./push_swap $(echo "0\t\t\t\t\t\t\v\v\v\v")
+valgrind ./push_swap $(echo "\t\r\t\t\t\t\t\t\v\v\v\v1 0")
+valgrind ./push_swap 3 2 1 --simple 5 4
+valgrind ./push_swap 3 2 1 5 4 --complex
+valgrind ./push_swap 3 2 1 --simple
+valgrind ./push_swap 3 2 1 --adaptive
+valgrind ./push_swap 1 2 3 --simple
+valgrind ./push_swap -2147483648 2147483647 0
 
 
-./push_swap +2 +8 "-8 -9" "+5 -5"
-./push_swap $(echo "1\t2\r0\t\t\t\t\t\t\v\v\v\v")
+shuf -i 1-9999 -n 100 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench
+shuf -i 1-9999 -n 500 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench
+
+tests simples
+shuf -i 1-50 -n 5 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench
+shuf -i 1-50 -n 5 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench --simple
+shuf -i 1-50 -n 5 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench --medium
+shuf -i 1-50 -n 5 > args.txt ; valgrind ./push_swap $(cat args.txt) --bench --complex
+
+flag problems
+valgrind ./push_swap "0 2 1" --semple
+valgrind ./push_swap "0 2 1" --adaptative
+valgrind ./push_swap "0 2 1" --adaptiv
+valgrind ./push_swap "0 2 1" --mediuuum
+valgrind ./push_swap "0 2 1" --simplee
+valgrind ./push_swap "0 2 1" --complexe
+valgrind ./push_swap "0 2 1" --simple --medium
+valgrind ./push_swap "--medium 1 4 5 6"
+valgrind ./push_swap "--medium 1 4 5 6" --simple
+valgrind ./push_swap "1 0 2" --adaptiv --simple
+valgrind ./push_swap "0 2 1" --complex --medium
+valgrind ./push_swap "" --complex
+valgrind ./push_swap --simple
+
+
+ARG="" ; valgrind ./push_swap $ARG --bench | valgrind ./checker $ARG
+ARG=$(echo "5\t1\r7") ; valgrind ./push_swap $ARG --bench | valgrind ./checker $ARG
