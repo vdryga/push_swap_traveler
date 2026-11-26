@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 16:46:15 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/21 17:51:32 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 11:32:01 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ void	free_all(char **tab)
 	if (!tab)
 		return ;
 	if (!*tab)
+	{
 		free(tab);
+		return ;
+	}
 	i = 0;
-	while (tab[i])
+	while (tab && tab[i])
 	{
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 }
 
 t_bool	has_no_flags(t_config *flags)

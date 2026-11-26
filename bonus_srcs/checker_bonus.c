@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:35:51 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 10:36:44 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 11:21:47 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	main(int ac, char **av)
 {
 	t_pushswap	*data;
 	t_list		*instructions;
+	t_bool		error;
 
 	if (ac < 2)
 	{
@@ -110,7 +111,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	instructions = NULL;
-	if (!get_instructions(&instructions))
+	error = FALSE;
+	if (!get_instructions(&instructions, &error) || error == FALSE)
 		check_result(data, &instructions);
 	ft_lstclear(&instructions, del_list);
 	free_data(data);

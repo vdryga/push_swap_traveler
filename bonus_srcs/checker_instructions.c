@@ -6,7 +6,7 @@
 /*   By: vldryga <vldryga@student.42angouleme.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 17:47:41 by vldryga           #+#    #+#             */
-/*   Updated: 2026/11/26 10:57:36 by vldryga          ###   ########.fr       */
+/*   Updated: 2026/11/26 11:29:33 by vldryga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,20 @@ static int	bonus_add_instr(t_list **instructions, char *instr)
 	return (0);
 }
 
-int	get_instructions(t_list **instructions)
+static t_bool	add_an_instruction(t_list **instructions, char **all_instr, int i)
+{
+	bonus_add_instr(instructions, ft_strdup(all_instr[i]));
+	if (!instructions)
+	{
+		msg_error();
+		free_all(all_instr);
+		ft_lstclear(instructions, del_list);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int	get_instructions(t_list **instructions, t_bool *error)
 {
 	char		*instr;
 	char		**all_instr;
@@ -117,17 +130,13 @@ int	get_instructions(t_list **instructions)
 	i = 0;
 	while (all_instr && all_instr[i])
 	{
-		bonus_add_instr(instructions, ft_strdup(all_instr[i]));
-		if (!instructions)
+		if (add_an_instruction(instructions, all_instr, i))
 		{
-			msg_error();
-			free_all(all_instr);
-			ft_lstclear(instructions, del_list);
-			return (1);
+			*error = TRUE;
+			return (0);
 		}
 		i++;
 	}
 	free_all(all_instr);
-	free(all_instr);
 	return (0);
 }
