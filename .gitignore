@@ -1,5 +1,7 @@
 .clangd
 
+checker_linux
+checker
 output
 out
 args.txt
